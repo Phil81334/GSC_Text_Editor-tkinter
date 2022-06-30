@@ -1,0 +1,1 @@
+# GSC_Text_Editor
