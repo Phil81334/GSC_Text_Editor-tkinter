@@ -1,0 +1,88 @@
+INCLUDE_M_START
+#include maps\;
+INCLUDE_M_END
+
+INCLUDE_C_START
+#include common_scripts\;
+INCLUDE_C_END
+
+USING_START
+#using_animtree( "generic_human" );
+USING_END
+
+INIT_FUNCTION_START
+init ()
+{
+
+}
+INIT_FUNCTION_END
+
+MAIN_FUNCTION_START
+main ()
+{
+
+}
+MAIN_FUNCTION_END
+
+CUSTOM_FUNCTION_START
+ ()
+{
+
+}
+CUSTOM_FUNCTION_END
+
+GLOBAL_VARIABLE_START
+level.var = ;
+GLOBAL_VARIABLE_END
+
+IF_START
+if ()
+{
+	
+}
+IF_END
+
+ELIF_START
+else if ()
+{
+	
+}
+ELIF_END
+
+ELSE_START
+else
+{
+	
+}
+ELSE_END
+
+WHILE_LOOP_START
+while (true)
+{
+    wait .5;
+}
+WHILE_LOOP_END
+
+FOR_LOOP_START
+for (i=0; i<array.size; i++)
+{
+	
+}
+FOR_LOOP_END
+
+SWITCH_START
+switch ()
+{
+    case 0:
+        
+        break;
+
+    case "":
+        
+        break;
+
+    default:
+		
+        break;
+}
+SWITCH_END

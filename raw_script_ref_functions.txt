@@ -1,0 +1,7440 @@
+getClosest_START
+getClosest( <org> String, <> String, <dist> N/A );
+
+Summary
+Returns the closest entity in < array > to location < org >
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<org>       String      N/A             Origin to be closest to.
+<>          String      N/A             N/A
+
+Optional Arguments
+Variable    Data Type    Valid values    Additional information
+<dist>      N/A          N/A             Minimum distance to check
+
+Example
+friendly = getclosest( level.player.origin, allies );
+getClosest_END
+
+getclosestfx_START
+getClosestFx( <org> String, <> String, <dist> N/A );
+
+Summary
+Returns the closest fx struct created by createfx in < fxarray > to location < org >
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<org>		String		N/A				Origin to be closest to.
+<>			String		N/A				N/A
+
+Optional Arguments
+Variable	Data Type	Valid values	Additional information
+<dist>		N/A			N/A				Minimum distance to check
+
+Example
+fxstruct = getClosestFx( hallway_tv, fxarray );
+getclosestfx_END
+
+getfarthest_START
+getFarthest( <org>, <>, <dist> );
+
+Summary
+Returns the farthest entity in < array > to location < org >
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<org>		String		N/A				Origin to be farthest from.
+<>			String		N/A				N/A
+
+Optional Arguments
+Variable	Data Type	Valid values	Additional information
+<dist>		N/A			N/A				Maximum distance to check
+
+Example
+target = getFarthest( level.player.origin, targets );
+getfarthest_END
+
+get_array_of_closest_START
+get_array_of_closest( <org>, <array>, <excluders>, <max>, <maxdist> );
+
+Summary
+Returns an array of all the entities in < array > sorted in order of closest to farthest.
+ 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<org>		String		N/A				Origin to be closest to.
+<array>		String		N/A				Array of entities to check distance on.
+
+Optional Arguments
+Variable	Data Type	Valid values	Additional information
+<excluders>	N/A			N/A				Array of entities to exclude from the check.
+<max>		N/A			N/A				Max size of the array to return
+<maxdist>	N/A			N/A				Max distance from the origin to return acceptable entities
+
+Example
+allies_sort = get_array_of_closest( originFC1.origin, allies );
+get_array_of_closest_END
+
+array_remove_START
+array_remove( <>, <> );
+
+Summary
+Returns < ents > array minus < remover >
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>			String		N/A				N/A
+<>			String		N/A				N/A
+
+Example
+ents = array_remove( ents, guy );
+array_remove_END
+
+array_combine_START
+array_combine( <>, <> );
+
+Summary
+Combines the two arrays and returns the resulting array. This function doesn't care if it produces duplicates in the array.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>			String		N/A				N/A
+<>			String		N/A				N/A
+
+Example
+combinedArray = array_combine( array1, array2 );
+array_combine_END
+
+assign_animtree_START
+assign_animtree(, <animname> );
+
+Summary
+Assigns the level.scr_animtree for the given animname to self.
+
+Optional Arguments
+Variable	Data Type	Valid values	Additional information
+<animname>	N/A			N/A				You can optionally assign the animname for self at this juncture.
+
+Example
+model = assign_animtree( "whatever" );
+assign_animtree_END
+
+spawn_anim_model_START
+spawn_anim_model( <animname>, <origin> );
+
+Summary
+Spawns a script model and gives it the animtree and model associated with that animname
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<animname>	String		N/A				Name of the animname from this map_anim.gsc.
+
+Optional Arguments
+Variable	Data Type	Valid values	Additional information
+<origin>	N/A			N/A				Optional origin.
+
+Example
+model = spawn_anim_model( "player_rappel" );
+spawn_anim_model_END
+
+vehicle_resumepath_START
+<entity> vehicle_resumepath();
+
+Summary
+will resume to the last path a vehicle was on. Only used for helicopters, ground vehicles don't ever deviate.
+
+Call on
+An Entity
+
+Example
+helicopter vehicle_resumepath();
+vehicle_resumepath_END
+
+vehicle_land_START
+<entity> vehicle_land();
+
+Summary
+lands a vehicle on the ground, _vehicle scripts take care of offsets and determining where the ground is relative to the origin. Returns when land is complete
+
+Call on
+An Entity
+
+Example
+helicopter vehicle_land();
+vehicle_land_END
+
+flat_angle_START
+flat_angle( <> );
+
+Summary
+Returns the specified angle as a flat angle.( 45, 90, 30 ) becomes( 0, 90, 30 ). Useful if you just need an angle around Y - axis.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>			String		N/A				N/A
+
+Example
+yaw = flat_angle( node.angles );
+flat_angle_END
+
+flat_origin_START
+flat_origin( <> );
+
+Summary
+Returns a flat origin of the specified origin. Moves Z corrdinate to 0.( x, y, z ) becomes( x, y, 0 )
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>			String		N/A				N/A
+
+Example
+org = flat_origin( self.origin );
+flat_origin_END
+
+within_fov_START
+within_fov( <>, <>, <>, <> );
+
+Summary
+Returns true if < end_origin > is within the players field of view, otherwise returns false.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A			N/A
+<>	String	N/A			N/A
+<>	String	N/A			N/A
+<>	String	N/A			N/A
+
+Example
+qBool = within_fov( level.player.origin, level.player.angles, target1.origin, cos( 45 ) );
+within_fov_END
+
+trigger_wait_START
+trigger_wait( <>, <> );
+
+Summary
+Waits until a trigger with the specified key / value is triggered
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>			String		N/A				N/A
+<>			String		N/A				N/A
+
+Example
+trigger_wait( "player_in_building1, "targetname" );
+trigger_wait_END
+
+set_flag_on_trigger_START
+set_flag_on_trigger( <>, <> );
+
+Summary
+Calls flag_set to set the specified flag when the trigger is triggered
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<> String N/A N/A
+<> String N/A N/A
+
+Example
+set_flag_on_trigger( trig, "player_is_outside" );
+set_flag_on_trigger_END
+
+set_flag_on_targetname_trigger_START
+set_flag_on_targetname_trigger( <> );
+
+Summary
+Sets the specified flag when a trigger with targetname < flag > is triggered.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+set_flag_on_targetname_trigger( "player_is_outside" );
+set_flag_on_targetname_trigger_END
+
+set_splitscreen_fog_START
+set_splitscreen_fog(, <[start_dist]: the distance the fog starts at from the player's camera>, <[halfway_dist]: the half-way mark for where the fog is 50% opaque>, <[halfway_height]: the half-way height mark for where the fog starts to fade out>, <[base_height]: the base height>, <[red]: how much red to apply, 0 - 1>, <[green]: how much green to apply, 0 - 1>, <[blue]: how much blue to apply, 0 - 1>, <[trans_time]: the time it takes to go from it's current fog setting to the new fog setting>, <[cull_dist]: the distance at which the game stop rendering objects> );
+
+Summary
+Sets the splitscreen fog for the level
+
+Optional Arguments
+Variable	Data Type	Valid values	Additional information
+<[start_dist]: the distance the fog starts at from the player's camera>	N/A	N/A	the distance the fog starts at from the player's camera
+<[halfway_dist]: the half-way mark for where the fog is 50% opaque>	N/A	N/A	the half-way mark for where the fog is 50% opaque
+<[halfway_height]: the half-way height mark for where the fog starts to fade out>	N/A	N/A	the half-way height mark for where the fog starts to fade out
+<[base_height]: the base height>	N/A	N/A	the base height
+<[red]: how much red to apply, 0 - 1>	N/A	N/A	how much red to apply, 0 - 1
+<[green]: how much green to apply, 0 - 1>	N/A	N/A	how much green to apply, 0 - 1
+<[blue]: how much blue to apply, 0 - 1>	N/A	N/A	how much blue to apply, 0 - 1
+<[trans_time]: the time it takes to go from it's current fog setting to the new fog setting>	N/A	N/A	the time it takes to go from it's current fog setting to the new fog setting
+<[cull_dist]: the distance at which the game stop rendering objects>	N/A	N/A	the distance at which the game stop rendering objects
+
+Example
+set_splitscreen_fog( 500, 2000, 100000, 0, 0.5, 0.5, 0.5, 1, 4000 );
+set_splitscreen_fog_END
+
+share_screen_START
+share_screen();
+
+Summary
+Toggles on/off the ability to show 1 screen instead of multiple while playing splitscreen
+
+Example
+share_screen( player, true );
+share_screen_END
+
+play_sound_on_tag_START
+<entity> play_sound_on_tag( <alias>, <tag>, <ends_on_death> );
+
+Summary
+Play the specified sound alias on a tag of an entity
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<alias>	String	N/A	Sound alias to play
+
+Optional Arguments
+Variable	Data Type	Valid values	Additional information
+<tag>	N/A	N/A	Tag on the entity to play sound on. If no tag is specified the entities origin will be used.
+<ends_on_death>	N/A	N/A	The sound will be cut short if the entity dies. Defaults to false.
+
+Example
+vehicle thread play_sound_on_tag( "horn_honk", "tag_engine" );
+play_sound_on_tag_END
+
+play_sound_on_tag_endon_death_START
+<entity> play_sound_on_tag_endon_death( <alias>, <tag> );
+
+Summary
+Play the specified sound alias on a tag of an entity but gets cut short if the entity dies
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<alias>	String	N/A	Sound alias to play
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<tag>	N/A	N/A	Tag on the entity to play sound on. If no tag is specified the entities origin will be used.
+
+Example
+vehicle thread play_sound_on_tag_endon_death( "horn_honk", "tag_engine" );
+play_sound_on_tag_endon_death_END
+
+play_sound_on_entity_START
+<entity> play_sound_on_entity( <> );
+
+Summary
+Play the specified sound alias on an entity at it's origin
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+level.player play_sound_on_entity( "breathing_better" );
+play_sound_on_entity_END
+
+play_loop_sound_on_tag_START
+<entity> play_loop_sound_on_tag( <alias>, <tag>, <bStopSoundOnDeath> );
+
+Summary
+Play the specified looping sound alias on a tag of an entity
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<alias>	String	N/A	Sound alias to loop
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<tag>	N/A	N/A	Tag on the entity to play sound on. If no tag is specified the entities origin will be used.
+<bStopSoundOnDeath>	N/A	N/A	Defaults to true. If true, will stop the looping sound when self dies
+
+Example
+vehicle thread play_loop_sound_on_tag( "engine_belt_run", "tag_engine" );
+play_loop_sound_on_tag_END
+
+stop_loop_sound_on_entity_START
+<entity> stop_loop_sound_on_entity( <> );
+
+Summary
+Stop playing the the loop sound alias on an entity
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+vehicle thread stop_loop_sound_on_entity( "engine_belt_run" );
+stop_loop_sound_on_entity_END
+
+append_array_struct_START
+append_array_struct( <>, <> );
+
+Summary
+Append the array elements in the (2nd) array struct parameter to the array in the (1st) array struct parameter.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>			String		N/A				N/A
+<>			String		N/A				N/A
+
+Example
+players = spawn_array_struct(); worst_enemies = built_worst_enemies(); append_array_struct( players, worst_enemies );
+append_array_struct_END
+
+play_loop_sound_on_entity_START
+<entity> play_loop_sound_on_entity( <alias>, <offset> );
+
+Summary
+Play loop sound alias on an entity
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<alias>	String	N/A	Sound alias to loop
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<offset>	N/A	N/A	Offset for sound origin relative to the world from the models origin.
+
+Example
+vehicle thread play_loop_sound_on_entity( "engine_belt_run" );
+play_loop_sound_on_entity_END
+
+play_sound_in_space_START
+<level> play_sound_in_space( <alias>, <>, <master> );
+
+Summary
+Stop playing the the loop sound alias on an entity
+
+Call on
+level
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<alias>	String	N/A	Sound alias to play
+<>	String	N/A	N/A
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<master>	N/A	N/A	Play this sound as a master sound. Defaults to false
+
+Example
+play_sound_in_space( "siren", level.speaker.origin );
+play_sound_in_space_END
+
+player_fudge_moveto_START
+<level> player_fudge_moveto( <dest>, <moverate> );
+
+Summary
+this function is to fudge move the player. Use this as a placeholder for an actual animation. returns when finished
+
+Call on
+level
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<dest>	String	N/A	origin to move the player to
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<moverate>	N/A	N/A	Units per second to move the player. defaults to 200
+
+Example
+player_fudge_moveto( carexitorg );
+player_fudge_moveto_END
+
+lerp_fov_overtime_START
+<level> lerp_fov_overtime( <time>, <destfov> );
+
+Summary
+lerps from the current cg_fov value to the destfov value linearly over time
+
+Call on
+level
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<time>	String	N/A	time to lerp
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<destfov>	N/A	N/A	field of view to go to
+
+Example
+None
+lerp_fov_overtime_END
+
+ent_flag_wait_START
+ent_flag_wait( <> );
+
+Summary
+Waits until the specified flag is set on self. Even handles some default flags for ai such as 'goal' and 'damage'
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+enemy ent_flag_wait( "goal" );
+ent_flag_wait_END
+
+ent_flag_wait_either_START
+ent_flag_wait_either( <>, <> );
+
+Summary
+Waits until either of the the specified flags are set on self. Even handles some default flags for ai such as 'goal' and 'damage'
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+enemy ent_flag_wait( "goal", "damage" );
+ent_flag_wait_either_END
+
+ent_flag_wait_or_timeout_START
+ent_flag_wait_or_timeout( <>, <> );
+
+Summary
+Waits until either the flag gets set on self or the timer elapses. Even handles some default flags for ai such as 'goal' and 'damage'
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+ent_flag_wait_or_timeout( "time_to_go", 3 );
+ent_flag_wait_or_timeout_END
+
+ent_flag_init_START
+ent_flag_init( <> );
+
+Summary
+Initialize a flag to be used. All flags must be initialized before using ent_flag_set or ent_flag_wait. Some flags for ai are set by default such as 'goal', 'death', and 'damage'
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+enemy ent_flag_init( "hq_cleared" );
+ent_flag_init_END
+
+ent_flag_set_delayed_START
+ent_flag_set_delayed( <>, <> );
+
+Summary
+Sets the specified flag after waiting the delay time on self, all scripts using ent_flag_wait on self will now continue.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+entity flag_set_delayed( "hq_cleared", 2.5 );
+ent_flag_set_delayed_END
+
+ent_flag_set_START
+ent_flag_set( <> );
+
+Summary
+Sets the specified flag on self, all scripts using ent_flag_wait on self will now continue.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+enemy ent_flag_set( "hq_cleared" );
+ent_flag_set_END
+
+ent_flag_clear_START
+ent_flag_clear( <> );
+
+Summary
+Clears the specified flag on self.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+enemy ent_flag_clear( "hq_cleared" );
+ent_flag_clear_END
+
+ent_flag_START
+ent_flag( <> );
+
+Summary
+Checks if the flag is set on self. Returns true or false.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+enemy ent_flag( "death" );
+ent_flag_END
+
+flag_wait_either_START
+flag_wait_either( <>, <> );
+
+Summary
+Waits until either of the the specified flags are set.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+flag_wait( "hq_cleared", "hq_destroyed" );
+flag_wait_either_END
+
+flag_wait_any_START
+flag_wait_any( <flagname1>, <flagname2>, <flagname3>, <flagname4> );
+
+Summary
+Waits until any of the the specified flags are set.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<flagname1>	String	N/A	name of a flag to wait on
+<flagname2>	String	N/A	name of a flag to wait on
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<flagname3>	N/A	N/A	name of a flag to wait on
+<flagname4>	N/A	N/A	name of a flag to wait on
+
+Example
+flag_wait_any( "hq_cleared", "hq_destroyed", "hq_overrun", "hq_skipped" );
+flag_wait_any_END
+
+flag_wait_all_START
+flag_wait_all( <flagname1>, <flagname2>, <flagname3>, <flagname4> );
+
+Summary
+Waits until all of the the specified flags are set.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<flagname1>	String	N/A	name of a flag to wait on
+<flagname2>	String	N/A	name of a flag to wait on
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<flagname3>	N/A	N/A	name of a flag to wait on
+<flagname4>	N/A	N/A	name of a flag to wait on
+
+Example
+flag_wait_any( "hq_cleared", "hq_destroyed", "hq_overrun", "hq_skipped" );
+flag_wait_all_END
+
+flag_wait_or_timeout_START
+flag_wait_or_timeout( <>, <> );
+
+Summary
+Waits until either the flag gets set or the timer elapses.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+flag_wait_or_timeout( "time_to_go", 3 );
+flag_wait_or_timeout_END
+
+flag_waitopen_or_timeout_START
+flag_waitopen_or_timeout( <>, <> );
+
+Summary
+Waits until either the flag gets cleared or the timer elapses.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+flag_waitopen_or_timeout( "time_to_go", 3 );
+flag_waitopen_or_timeout_END
+
+flag_set_delayed_START
+flag_set_delayed( <>, <> );
+
+Summary
+Sets the specified flag after waiting the delay time, all scripts using flag_wait will now continue.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+flag_set_delayed( "hq_cleared", 2.5 );
+flag_set_delayed_END
+
+draw_arrow_time_START
+<entity> draw_arrow_time( <>, <>, <>, <> );
+
+Summary
+Draws an arrow pointing at < end > in the specified color for < duration > seconds.
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+thread draw_arrow_time( lasttarg.origin, targ.origin, ( 0, 0, 1 ), 5.0 );
+draw_arrow_time_END
+
+get_last_ent_in_chain_START
+get_last_ent_in_chain( <> );
+
+Summary
+Get the last entity/node/vehiclenode in a chain of targeted entities
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+eLastNode = eVehicle get_last_ent_in_chain( "vehiclenode" );
+get_last_ent_in_chain_END
+
+structarray_remove_START
+<entity> structarray_remove( <param1>, <param2> );
+
+Summary
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<param1>	String	N/A	N/A
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<param2>	N/A	N/A	N/A
+
+Example
+structarray_remove_END
+
+self_delete_START
+<entity> self_delete();
+
+Summary
+Just calls the delete() script command on self. Reason for this is so that we can use array_thread to delete entities
+
+Call on
+An Entity
+
+Example
+ai[ 0 ] thread self_delete();
+self_delete_END
+
+notify_delay_START
+<entity> notify_delay( <>, <> );
+
+Summary
+Notifies self the string after waiting the specified delay time
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+vehicle notify_delay( "start_to_smoke", 3.5 );
+notify_delay_END
+
+objective_complete_START
+<entity> objective_complete( <> );
+
+Summary
+Sets an objective to DONE
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+objective_complete( 3 );
+objective_complete_END
+
+getClosestFx( <org>, <>, <dist> );
+
+Summary
+Returns the closest fx struct created by createfx in < fxarray > to location < org >
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<org>	String	N/A	Origin to be closest to.
+<>	String	N/A	N/A
+
+Optional
+Arguments
+Variable	Data Type	Valid values	Additional information
+<dist>	N/A	N/A	Minimum distance to check
+
+Example
+fxstruct = getClosestFx( hallway_tv, fxarray );
+
+getFarthest( <org>, <>, <dist> );
+
+Summary
+Returns the farthest entity in < array > to location < org >
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<org>	String	N/A	Origin to be farthest from.
+<>	String	N/A	N/A
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<dist>	N/A	N/A	Maximum distance to check
+
+Example
+target = getFarthest( level.player.origin, targets );
+
+get_closest_point( <origin>, <>, <maxDist> );
+
+Summary
+Returns the closest point from array < points > from location < origin >
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<origin>	String	N/A	Origin to be closest to.
+<>	String	N/A	N/A
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<maxDist>	N/A	N/A	Maximum distance to check
+
+Example
+target = getFarthest( level.player.origin, targets );
+
+get_within_range( <org>, <>, <dist> );
+
+Summary
+Returns all elements from the array that are within DIST range to ORG.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<org>	String	N/A	Origin to be closest to.
+<>	String	N/A	N/A
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<dist>	N/A	N/A	Maximum distance to check
+
+Example
+close_ai = get_within_range( level.player.origin, ai, 500 );
+
+get_outisde_range( <org>, <>, <dist> );
+
+Summary
+Returns all elements from the array that are outside DIST range to ORG.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<org>	String	N/A	Origin to be closest to.
+<>	String	N/A	N/A
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<dist>	N/A	N/A	Maximum distance to check
+
+Example
+close_ai = get_outside_range( level.player.origin, ai, 500 );
+
+get_closest_living( <org>, <>, <dist> );
+
+Summary
+Returns the closest living entity from the array from the origin
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<org>	String	N/A	Origin to be closest to.
+<>	String	N/A	N/A
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<dist>	N/A	N/A	Maximum distance to check
+
+Example
+kicker = get_closest_living( node.origin, ai );
+
+get_closest_index( <org>, <>, <dist> );
+
+Summary
+same as getClosest but returns the closest entity's array index instead of the actual entity.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<org>	String	N/A	Origin to be closest to.
+<>	String	N/A	N/A
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<dist>	N/A	N/A	Maximum distance to check
+
+Example
+
+get_closest_ai( <>, <> );
+
+Summary
+Returns the closest AI of the specified team to the specified origin.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+friendly = get_closest_ai( level.player.origin, "allies" );
+
+get_array_of_closest( <org>, <array>, <excluders>, <max>, <maxdist> );
+
+Summary
+Returns an array of all the entities in < array > sorted in order of closest to farthest.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<org>	String	N/A	Origin to be closest to.
+<array>	String	N/A	Array of entities to check distance on.
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<excluders>	N/A	N/A	Array of entities to exclude from the check.
+<max>	N/A	N/A	Max size of the array to return
+<maxdist>	N/A	N/A	Max distance from the origin to return acceptable entities
+
+Example
+allies_sort = get_array_of_closest( originFC1.origin, allies );
+
+debug_message( <message>, <>, <duration> );
+
+Summary
+Prints 3d debug text at the specified location for a duration of time.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<message>	String	N/A	String to print
+<>	String	N/A	N/A
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<duration>	N/A	N/A	Time to keep the string on screen. Defaults to 5 seconds.
+
+Example
+debug_message( "I am the enemy", enemy.origin, 3.0 );
+
+debug_message_clear( <message>, <origin>, <duration>, <extraEndon> );
+
+Summary
+Prints 3d debug text at the specified location for a duration of time, but can be cleared before the normal time has passed if a notify occurs.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<message>	String	N/A	String to print
+<origin>	String	N/A	Location of string ( x, y, z )
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<duration>	N/A	N/A	Time to keep the string on screen. Defaults to 5 seconds.
+<extraEndon>	N/A	N/A	Level notify string that will make this text go away before the time expires.
+
+Example
+debug_message( "I am the enemy", enemy.origin, 3.0, "enemy died" );
+
+draw_line_for_time( <>, <>, <>, <>, <>, <> );
+
+Summary
+Draws a line from < org1 > to < org2 > in the specified color for the specified duration
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+thread draw_line_for_time( player.origin, vehicle.origin, 1, 0, 0, 10.0 );
+
+draw_line_to_ent_for_time( <>, <>, <>, <>, <>, <> );
+
+Summary
+Draws a line from < org1 > to < ent > origin in the specified color for the specified duration. Updates to the entities origin each frame.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+thread draw_line_to_ent_for_time( level.player.origin, vehicle, 1, 0, 0, 10.0 );
+
+draw_line_from_ent_to_ent_for_time( <>, <>, <>, <>, <>, <> );
+
+Summary
+Draws a line from one entity origin to another entity origin in the specified color for the specified duration. Updates to the entities origin each frame.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+thread draw_line_from_ent_to_ent_for_time( level.player, vehicle, 1, 0, 0, 10.0 );
+
+draw_line_from_ent_to_ent_until_notify( <>, <>, <>, <>, <>, <>, <> );
+
+Summary
+Draws a line from one entity origin to another entity origin in the specified color until < notifyEnt > is notified < notifyString > . Updates to the entities origin each frame.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+thread draw_line_from_ent_to_ent_until_notify( level.player, guy, 1, 0, 0, guy, "anim_on_tag_done" );
+
+draw_line_until_notify( <>, <>, <>, <>, <>, <>, <> );
+
+Summary
+Draws a line from < org1 > to < org2 > in the specified color until < notifyEnt > is notified < notifyString >
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+thread draw_line_until_notify( self.origin, targetLoc, 1, 0, 0, self, "stop_drawing_line" );
+
+giveachievement_wrapper( <achievment>, <[all_players]: If true, then give everyone the achievement> );
+
+Summary
+Gives an Achievement to the specified player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<achievment>	String	N/A	The code string for the achievement
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<[all_players]: If true, then give everyone the achievement>	N/A	N/A	If true, then give everyone the achievement
+
+Example
+player giveachievement_wrapper( "MAK_ACHIEVEMENT_RYAN" );
+
+get_players();
+
+Summary
+Returns all of the players currently in the level
+
+Example
+players = get_players();
+
+get_host();
+
+Summary
+Returns the host of the game
+
+Example
+host = get_host();
+
+is_coop();
+
+Summary
+Returns true if we're playing a coop game
+
+Example
+if( is_coop() )
+
+any_player_IsTouching( <> );
+
+Summary
+Return true/false if any player in touching the given entity.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+if( any_player_IsTouching( trigger ) )
+
+get_player_touching( <> );
+
+Summary
+Returns the player that is touching the given entity, if no players are touching the entity, it returns undefined.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+toucher = get_player_touching( trigger ) )
+
+get_closest_player( <> );
+
+Summary
+Returns the closest player to the given origin.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+closest_player = get_closest_player( objective.origin );
+
+get_random_player();
+
+Summary
+Returns a random player.
+
+Example
+player = get_random_player();
+
+set_all_players_blur( <>, <> );
+
+Summary
+Sets the given blur on all of the players.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+set_all_players_blur( 5, 1 );
+
+set_all_players_double_vision( <>, <> );
+
+Summary
+Sets the given double vision on all of the players.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+set_all_players_double_vision( 5, 1 );
+
+set_all_players_shock( <>, <> );
+
+Summary
+Sets the given shellshock on all of the player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+set_all_players_shock( "mak_shellshock", 1 );
+
+set_all_players_visionset( <>, <> );
+
+Summary
+Sets the given vision set on all of the players.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+set_all_players_visionset( "mak_intro", 1 );
+
+hide_all_player_models();
+
+Summary
+Hides all of the player's 3rd person models
+
+Example
+hide_all_player_models();
+
+show_all_player_models();
+
+Summary
+Shows all of the player's 3rd person models
+
+Example
+show_all_player_models();
+
+wait_for_first_player();
+
+Summary
+Waits for the first player to connect before returning
+
+Example
+wait_for_first_player();
+
+wait_for_all_players();
+
+Summary
+Waits for all of the players to connect before returning
+
+Example
+wait_for_all_players();
+
+<ai> disable_replace_on_death();
+
+Summary
+Disables replace on death
+
+Call on
+ai
+
+Example
+guy disable_replace_on_death();
+
+battlechatter_off( <> );
+
+Summary
+Disable battlechatter for the specified team
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+battlechatter_off( "allies" );
+
+battlechatter_on( <> );
+
+Summary
+Enable battlechatter for the specified team
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+battlechatter_on( "allies" );
+
+autosave_by_name( <> );
+
+Summary
+autosave the game with the specified save name
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+thread autosave_by_name( "building2_cleared" );
+
+autosave_or_timeout( <>, <> );
+
+Summary
+Autosaves with the specified name but times out if the time elapses
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+autosave_or_timeout( "thename", 3.5 )
+
+array_levelthread( <entities>, <process>, <var1>, <var2>, <var3> );
+
+Summary
+Threads the < process > function for every entity in the < entities > array. The level calls the function and each entity of the array is passed as the first parameter to the process.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<entities>	String	N/A	array of entities to thread the process
+<process>	String	N/A	pointer to a script function
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<var1>	N/A	N/A	parameter 1 to pass to the process
+<var2>	N/A	N/A	parameter 2 to pass to the process
+<var3>	N/A	N/A	parameter 3 to pass to the process
+
+Example
+array_levelthread( getentarray( "palm", "targetname" ), ::palmTrees );
+
+add_to_array( <>, <> );
+
+Summary
+Adds < ent > to < array > and returns the new array.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+nodes = add_to_array( nodes, new_node );
+
+array_randomize_START
+array_randomize( <> );
+
+Summary
+Randomizes the array and returns the new array.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>			String		N/A				N/A
+
+Example
+roof_nodes = array_randomize( roof_nodes );
+array_randomize_END
+
+array_reverse_START
+array_reverse( <> );
+
+Summary
+Reverses the order of the array and returns the new array.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+patrol_nodes = array_reverse( patrol_nodes );
+array_reverse_END
+
+is_in_array_START
+is_in_array( <>, <> );
+
+Summary
+Returns true if < eFindee > is an entity in array < aeCollection > . False if it is not.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+qBool = is_in_array( eTargets, vehicle1 );
+is_in_array_END
+ 
+array_combine_START
+array_combine( <>, <> );
+
+Summary
+Combines the two arrays and returns the resulting array. This function doesn't care if it produces duplicates in the array.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+combinedArray = array_combine( array1, array2 );
+array_combine_END
+
+array_merge_START
+array_merge( <>, <> );
+
+Summary
+Combines the two arrays and returns the resulting array. Adds only things that are new to the array, no duplicates.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+combinedArray = array_merge( array1, array2 );
+array_merge_END
+
+array_exclude_START
+array_exclude( <>, <> );
+
+Summary
+Returns an array excluding all members of < arrayExclude >
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+newArray = array_exclude( array1, array2 );
+array_exclude_END
+
+array_removeDead_START
+array_removeDead( <> );
+
+Summary
+Returns a new array of < array > minus the dead entities
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+friendlies = array_removeDead( friendlies );
+array_removeDead_END
+
+array_removeUndefined_START
+array_removeUndefined( <> String );
+Summary
+Returns a new array of < array > minus the undefined indicies
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+ents = array_removeUndefined( ents );
+array_removeUndefined_END
+
+array_insert_START
+array_insert( <>, <>, <> );
+
+Summary
+Returns a new array of < array > plus < object > at the specified index
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+ai = array_insert( ai, spawned, 0 );
+array_insert_END
+
+array_remove_START
+array_remove( <>, <> );
+
+Summary
+Returns < ents > array minus < remover >
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+ents = array_remove( ents, guy );
+array_remove_END
+
+spread_array_thread_START
+spread_array_thread( <entities>, <process>, <var1>, <var2>, <var3> );
+
+Summary
+Threads the < process > function on every entity in the < entities > array. The entity will become "self" in the specified function. Each thread is started 1 network frame apart from the next.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<entities>	String	N/A	array of entities to thread the process
+<process>	String	N/A	pointer to a script function
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<var1>	N/A	N/A	parameter 1 to pass to the process
+<var2>	N/A	N/A	parameter 2 to pass to the process
+<var3>	N/A	N/A	parameter 3 to pass to the process
+
+Example
+array_thread( getaiarray( "allies" ), ::set_ignoreme, false ); //<-- Not correct i know. But this is from the script ref site.
+spread_array_thread_END
+
+arcademode_assignpoints_START
+arcademode_assignpoints( <>, <> );
+
+Summary
+Assign points in arcade mode.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+arcademode_assignpoints( "arcademode_score_explodableitem", self );
+arcademode_assignpoints_END
+
+stop_magic_bullet_shield_START
+stop_magic_bullet_shield();
+
+Summary
+Stops magic bullet shield on an AI, setting his health back to a normal value and making him vulnerable to death.
+
+Example
+friendly stop_magic_bullet_shield();
+stop_magic_bullet_shield_END
+
+magic_bullet_shield_START
+magic_bullet_shield(, <health>, <time>, <oldhealth>, <maxhealth_modifier>, <no_death_detection> );
+
+Summary
+Makes an AI invulnerable to death. When he gets shot, he is ignored by enemies for < time > seconds and his health is regenerated.
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<health>	N/A	N/A	Health to set on the AI while in magic_bullet_shield. Default is 100000000.
+<time>	N/A	N/A	Time in seconds that the AI will be ignored after taking damage. Default is 0 seconds (not ignored).
+<oldhealth>	N/A	N/A	Health to give the AI when magic bullet shield is turned off. Default is the AI's health value when magic_bullet_shield is called.
+<maxhealth_modifier>	N/A	N/A	Multiplier for the AI's .maxhealth while in magic_bullet_shield mode. Modifies the color the friendly name will be. This is rarely set, but sometimes used for scripted sequences.
+<no_death_detection>	N/A	N/A	Set this to make the AI not script error on death, like if you want the guy to be deletable.
+
+Example
+friendly thread magic_bullet_shield();
+magic_bullet_shield_END
+
+deletable_magic_bullet_shield_START
+deletable_magic_bullet_shield(, <health>, <time>, <oldhealth>, <maxhealth_modifier> );
+
+Summary
+A version of magic bullet shield that does not error if the AI dies. Useful for guys that can be deleted but you want them to have aspects of MBS.
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<health>	N/A	N/A	Health to set on the AI while in magic_bullet_shield. Default is 100000000.
+<time>	N/A	N/A	Time in seconds that the AI will be ignored after taking damage. Default is 0 seconds (not ignored).
+<oldhealth>	N/A	N/A	Health to give the AI when magic bullet shield is turned off. Default is the AI's health value when magic_bullet_shield is called.
+<maxhealth_modifier>	N/A	N/A	Multiplier for the AI's .maxhealth while in magic_bullet_shield mode. Modifies the color the friendly name will be. This is rarely set, but sometimes used for scripted sequences.
+
+Example
+friendly thread magic_bullet_shield(); //<-- Not correct i know. But this is from the script ref site.
+deletable_magic_bullet_shield_END
+
+spawn_failed_START
+spawn_failed( <> );
+
+Summary
+Checks to see if the spawned AI spawned correctly or had errors. Also waits until all spawn initialization is complete. Returns true or false.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+spawn_failed( level.price );
+spawn_failed_END
+
+waittill_dead_START
+waittill_dead( <guys>, <num>, <timeoutLength> );
+
+Summary
+Waits until all the AI in array < guys > are dead.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<guys>	String	N/A	Array of actors to wait until dead
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<num>	N/A	N/A	Number of guys that must die for this function to continue
+<timeoutLength>	N/A	N/A	Number of seconds before this function times out and continues
+
+Example
+waittill_dead( getaiarray( "axis" ) );
+waittill_dead_END
+
+waittill_dead_or_dying_START
+waittill_dead_or_dying( <guys>, <num>, <timeoutLength> );
+
+Summary
+Similar to waittill_dead(). Waits until all the AI in array < guys > are dead OR dying (long deaths).
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<guys>	String	N/A	Array of actors to wait until dead or dying
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<num>	N/A	N/A	Number of guys that must die or be dying for this function to continue
+<timeoutLength>	N/A	N/A	Number of seconds before this function times out and continues
+
+Example
+waittill_dead_or_dying( getaiarray( "axis" ) );
+waittill_dead_or_dying_END
+
+get_living_ai_START
+get_living_ai( <>, <> );
+
+Summary
+Returns single spawned ai in the level of and . Error if used on more than one ai with same name and type
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+patroller = get_living_ai( "patrol", "script_noteworthy" );
+get_living_ai_END
+
+get_living_ai_array_START
+get_living_ai_array( <>, <> );
+
+Summary
+Returns array of spawned ai in the level of and
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+patrollers = get_living_ai_array( "patrol", "script_noteworthy" );
+get_living_ai_array_END
+
+get_living_aispecies_START
+get_living_aispecies( <name>, <>, <bread> );
+
+Summary
+Returns single spawned ai in the level of and . Error if used on more than one ai with same name and type
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<name>	String	N/A	the value of the targetname or script_noteworthy of the ai
+<>	String	N/A	N/A
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<bread>	N/A	N/A	the breadof spieces, if none is given, defaults to 'all'
+
+Example
+patroller = get_living_aispecies( "patrol", "script_noteworthy", "dog" );
+get_living_aispecies_END
+
+get_living_aispecies_array_START
+get_living_aispecies_array( <name>, <>, <bread> );
+
+Summary
+Returns array of spawned ai of any speices in the level of , , and
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<name>	String	N/A	the value of the targetname or script_noteworthy of the ai
+<>	String	N/A	N/A
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<bread>	N/A	N/A	the breadof spieces, if none is given, defaults to 'all'
+
+Example
+patrollers = get_living_aispecies_array( "patrol", "script_noteworthy", "dog" );
+get_living_aispecies_array_END
+
+gun_remove_START
+<ai> gun_remove();
+
+Summary
+Removed the gun from the given AI. Often used for scripted sequences where you dont want the AI to carry a weapon.
+
+Call on
+ai
+
+Example
+level.price gun_remove();
+gun_remove_END
+
+gun_switchto_START
+<ai> gun_switchto( <>, <> );
+
+Summary
+Switches the given AI's gun to the one specified.
+
+Call on
+ai
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+level.zeitzev gun_switchto( "ppsh", "right" );
+gun_switchto_END
+
+gun_recall_START
+<ai> gun_recall();
+
+Summary
+Give the AI his gun back.
+
+Call on
+ai
+
+Example
+level.price gun_recall();
+gun_recall_END
+
+enable_careful_START
+enable_careful();
+
+Summary
+Makes an AI not advance into his fixednode safe radius if an enemy enters it.
+
+Example
+guy enable_careful()
+enable_careful_END
+
+disable_careful_START
+disable_careful();
+
+Summary
+Turns off careful mode for this AI.
+
+Example
+guy disable_careful()
+disable_careful_END
+
+set_goal_node_START
+set_goal_node( <> );
+
+Summary
+calls script command setgoalnode( ), but also sets self.last_set_goalnode to
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+guy set_goal_node( node );
+set_goal_node_END
+
+set_goal_pos_START
+set_goal_pos( <> );
+
+Summary
+calls script command setgoalpos( ), but also sets self.last_set_goalpos to
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+guy set_goal_pos( vector );
+set_goal_pos_END
+
+set_goal_ent_START
+set_goal_ent( <> );
+
+Summary
+calls script command setgoalpos( .origin ), but also sets self.last_set_goalent to
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+guy set_goal_ent( script_origin );
+set_goal_ent_END
+
+badPlace_arc_START
+badPlace_arc( <name>, <duration>, <origin>, <radius>, <height>, <direction>, <right angle>, <left angle>, <team> );
+
+Summary
+Creates a bad place arc. AI will flee this position if they can, and will not go into it if they can avoid it.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<name>	String	N/A	The name of the bad place. If name is not "", the bad place can be moved or deleted by using the unique name.
+<duration>	String	N/A	If duration > 0, the bad place will automatically delete itself after this time. If duration <= 0, the bad place must have a name and will last until manually deleted.
+<origin>	String	N/A	The base position of the bad place.
+<radius>	String	N/A	The radius of the bad place.
+<height>	String	N/A	The height of the bad place.
+<direction>	String	N/A	The direction vector is used to give a reference frame for the left and right angles.
+<right angle>	String	N/A	The left angle and right angle are both positive angles (eg, "45, 45" will give a 90 degree arc).
+<left angle>	String	N/A	The left angle and right angle are both positive angles (eg, "45, 45" will give a 90 degree arc).
+<team>	String	N/A	You must specify at least one team for which this place is bad, but can give several. The allowed teams are 'axis', 'allies', and 'neutral'.
+
+Example
+badPlace_arc("halftrack_bp", -1, mg42.origin, 1500, 400, (1.00, 0.00, 0.00), 20, 0, "allies");
+badPlace_arc_END
+
+badPlace_cylinder_START
+badPlace_cylinder( <name>, <duration>, <origin>, <radius>, <height>, <team> );
+
+Summary
+Creates a bad place cylinder. AI will flee this position if they can, and will not go into it if they can avoid it.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<name>	String	N/A	The name of the bad place. If name is not "", the bad place can be moved or deleted by using the unique name.
+<duration>	String	N/A	If duration > 0, the bad place will automatically delete itself after this time. If duration <= 0, the bad place must have a name and will last until manually deleted.
+<origin>	String	N/A	The base position of the bad place.
+<radius>	String	N/A	The radius of the bad place.
+<height>	String	N/A	The height of the bad place.
+<team>	String	N/A	You must specify at least one team for which this place is bad, but can give several. The allowed teams are 'axis', 'allies', and 'neutral'.
+
+Example
+badPlace_cylinder("moody", -1, level.moodyfall_origin, 75, 300, "neutral");
+badPlace_cylinder_END
+
+badPlace_delete_START
+badPlace_delete( <bad place identifier> );
+
+Summary
+Deletes a bad place. It is okay to delete a bad place name that doesn't exist. It is not okay to delete the special name "".
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<bad place identifier>	String	N/A	The bad place to delete
+
+Example
+badPlace_delete("bpFlak1");
+badPlace_delete_END
+
+getKeyBinding_START
+getKeyBinding( <key binding> );
+
+Summary
+Gets a key binding. Applicable values are: "+scores","+speed","+forward","+back", "+moveleft","+moveright", "+moveup", "+movedown", "+left", "+right", "+strafe", "+lookup", "+lookdown", "+mlook", "centerview", "toggleads","+melee", "+prone", "lowerstance", "raisestance", "togglecrouch", "toggleprone", "goprone", "gocrouch", "+gostand", "weaponslot primary", "weaponslot primaryb", "+offhand", "cycleoffhand", "+attack", "weapprev", "weapnext", "+activate", "+reload", "+leanleft", "+leanright", "screenshot", "screenshotJPEG",
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<key binding>	String	N/A	a key binding name as a string
+
+Example
+firekey = getKeyBinding("+attack")/n
+getKeyBinding_END
+
+radiusDamage_START
+radiusDamage( <origin>, <range>, <max damage>, <min damage> );
+
+Summary
+Does damage to all damageable objects within a given radius. The amount of damage is linear according to how close the object is to the radius
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<origin>	String	N/A	The centre of the damage.
+<range>	String	N/A	The radius of the damage done.
+<max damage>	String	N/A	The maximum damage done. This will be done to objects close to the origin
+<min damage>	String	N/A	The minimum damage done. This will be done to objects at the edge of the damage sphere.
+
+Example
+radiusDamage(level.player.origin, 500,damager,damager);
+radiusDamage_END
+
+setCanDamage_START
+<entity> setCanDamage( <can damage> );
+
+Summary
+Set the candamage flag for this entity - this means that it can respond to notifies from bullets and grenade hits
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<can damage>	Bool	N/A	The can damage flag
+
+Example
+self setCanDamage(true);
+setCanDamage_END
+
+setPlayerIgnoreRadiusDamage_START
+setPlayerIgnoreRadiusDamage( <player ignore radius damage> );
+
+Summary
+Sets the player to ignore radius damage
+This function was approved!
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<player ignore radius damage>	Bool	N/A	Flag indicating whether the player is to ignore radius damage.
+
+Example
+setPlayerIgnoreRadiusDamage(true);
+setPlayerIgnoreRadiusDamage_END
+
+assert_START
+assert( <value> );
+
+Summary
+assert that the given statement is correct. The function will throw a script error if this is false (only if developer 1 and developer_script 1 enabled prior to map load!).
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<value>	String	N/A	statement that is asserted to be correct
+
+Example
+assert ( enemyInSight == true );
+assert_END
+
+assertEx_START
+assertEx( <value>, <message> );
+
+Summary
+assert that the given statement is correct. The function will throw a script error if this is false, with the given message (only if developer 1 and developer_script 1 enabled prior to map load!).
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<value>	String	N/A	statement that is asserted to be correct
+<message>	String	N/A	error message
+
+Example
+assertEx ( enemyInSight == true, "There is no enemy is sight!!" );
+assertEx_END
+
+assertMsg_START
+assertMsg( <message> );
+
+Summary
+Throws a script error with the given message (only if developer 1 and developer_script 1 enabled prior to map load!).
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<message>	String	N/A	error message
+
+Example
+assertMsg (  "There is no enemy is sight!!" );
+assertMsg_END
+
+getDebugEye_START
+<actor> getDebugEye();
+
+Summary
+Gets the debug position of the eye for an AI or Player
+
+Call on
+An Actor
+
+Example
+eyePos = level.player getDebugEye();
+getDebugEye_END
+
+iprintln_START
+iPrintLn( <text> );
+
+Summary
+Write line to the top left corner of players' screens. If not called on a player, line will show for all players. If called on a player the line will only show for that player.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<text>	String	N/A	text to be written
+
+Example
+iPrintLn ("bler");
+iprintln_END
+
+iPrintLnBold_START
+iPrintLnBold( <text> );
+
+Summary
+Write line to the center of players' screens. If not called on a player, line will show for all players. If called on a player the line will only show for that player.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<text>	String	N/A	text to be written
+
+Example
+iPrintLnBold ("bler");
+iPrintLnBold_END
+
+line_START
+line( <start>, <end>, <color>, <depthTest> );
+
+Summary
+Draw a debug line (vector) in-game for one frame (only visible if developer 1 and developer_script 1 enabled prior to map load!).
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<start>	String	N/A	start vector position of the line
+<end>	String	N/A	end vector position of the line
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<color>	String	N/A	RGB color of the line in a vector, defaults to white
+<depthTest>	String	N/A	whether to only draw the line when it is in front of objects, defaults to false
+
+Example
+line (self.origin, self.origin + forwardFar, (0.9, 0.7, 0.6),  false);
+line_END
+
+print_START
+print( <text> );
+
+Summary
+Development only - write to the console (only visible if developer 1 and developer_script 1 enabled prior to map load!).
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<text>	String	N/A	text to be written
+
+Example
+print ("bler");
+print_END
+
+print3D_START
+print3D( <origin>, <text>, <color>, <alpha>, <scale> );
+
+Summary
+Draw 3d text on screen at an origin for one frame (only visible if developer 1 and developer_script 1 enabled prior to map load!).
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<origin>	String	N/A	3d position of text to be drawn
+<text>	String	N/A	The text to draw on the screen
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<color>	String	N/A	RGB color of the line in a vector, defaults to white
+<alpha>	String	N/A	alpha value of the text (how transparent), defaults to 1
+<scale>	String	N/A	size scale of the text, defaults to 1
+
+Example
+print3D (start, "START", (1.0, 0.8, 0.5), 1, 3);
+print3D_END
+
+printLn_START
+printLn( <text> );
+
+Summary
+Development only - write line to the console (only visible if developer 1 and developer_script 1 enabled prior to map load!).
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<text>	String	N/A	text to be written
+
+Example
+printLn ("bler");
+printLn_END
+
+setDebugAngles_START
+setDebugAngles( <angles> );
+
+Summary
+Set the debugging angles for a debug camera.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<angles>	String	N/A	The debug player angles
+
+Example
+setDebugAngles (camera.angles);
+setDebugAngles_END
+
+setDebugOrigin_START
+setDebugOrigin( <origin> );
+
+Summary
+Set the debugging origin for a debug camera.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<origin>	String	N/A	The debug player position
+
+Example
+setDebugOrigin (camera.origin + (0,0,-60));
+setDebugOrigin_END
+
+getDebugDvar_START
+getDebugDvar( <dvar> );
+
+Summary
+Gets the value of a debug dvar as a string
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<dvar>	String	N/A	The dvar name as a string
+
+Example
+if (getDebugDvar ("debug") != "1") ...
+getDebugDvar_END
+
+getDebugDvarFloat_START
+getDebugDvarFloat( <dvar> );
+
+Summary
+Gets the value of a debug dvar as a floating point number
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<dvar>	String	N/A	The dvar name as a string
+
+Example
+if (getDebugDvarFloat("debug_stopenemypos") < -1) ...
+getDebugDvarFloat_END
+
+getDebugDvarInt_START
+getDebugDvarInt( <dvar> );
+
+Summary
+Gets the value of a debug dvar as an integer
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<dvar>	String	N/A	The dvar name as a string
+
+Example
+if (getDebugDvarInt("debug_stopenemypos") != -1) ...
+getDebugDvarInt_END
+
+getDvar_START
+getDvar( <dvar> );
+
+Summary
+Gets the value of a dvar as a string. Only fetches the host's dvar value, not clients. To fetch client dvar values you must use getDvar() in a clientscript.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<dvar>	String	N/A	The dvar name as a string
+
+Example
+if(getDvar("debug_skipintro") == "on") ... ;
+getDvar_END
+
+getDvarFloat_START
+getDvarFloat( <dvar> );
+
+Summary
+Gets the value of a dvar as a floating point number. Only fetches the host's dvar value, not clients. To fetch client dvar values you must use getDvar() in a clientscript.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<dvar>	String	N/A	The dvar name as a string
+
+Example
+oldDelay = getDvarFloat ("effect_delay");
+getDvarFloat_END
+
+getDvarInt_START
+getDvarInt( <dvar> );
+
+Summary
+Gets the value of a dvar as an integer. Only fetches the host's dvar value, not clients. To fetch client dvar values you must use getDvar() in a clientscript.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<dvar>	String	N/A	The dvar name as a string
+
+Example
+level.fogtype = getDvarInt("scr_fog_type");
+getDvarInt_END
+
+setDvar_START
+setDvar( <dvar>, <value> );
+
+Summary
+Sets the value of a dvar. If the 'development' dvar is set then any dvar can be set, otherwise only external dvars ( that is dvars that are not defined in code can be set. ) Only sets the host's dvar value, not clients. To set client dvar values you must use setClientDvar() in a gsc script or setClientDvar in a clientscript.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<dvar>	String	N/A	The dvar name as a string
+<value>	String	N/A	The dvar value
+
+Example
+setDvar("r_eyesAdjust", "1")
+setDvar_END
+
+setSavedDvar_START
+setSavedDvar( <dvar>, <value> );
+
+Summary
+Sets the value of a dvar. Saved dvars are saved in the save game, and are reset to default on level change. Only works on dvars that have the 'SAVED' parameter set
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<dvar>	String	N/A	The dvar name as a string
+<value>	String	N/A	The dvar value
+
+Example
+setSavedDvar("r_eyesAdjust", "1")
+setSavedDvar_END
+
+getFXVisibility_START
+getFXVisibility ( <start> String, <end> String );
+
+Summary
+Returns the amount of visibilty (0.0 - 1.0) between the start and end points
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<start>	String	N/A	Starting point
+<end>	String	N/A	Ending point
+
+Example
+vis = getfxvisibility(start, end);
+getFXVisibility_END
+
+loadFX_START
+loadFX( <filename> );
+
+Summary
+Load the given effect
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<filename>	String	N/A	The filename of the effect to be loaded
+
+Example
+fx = loadFX("fx/explosions/large_vehicle_explosion.efx");
+loadFX_END
+
+playFX_START
+playFX( <effect id>, <position of effect>, <forward vector>, <up vector> );
+
+Summary
+Play this effect.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<effect id>	String	N/A	The effect id returned by loadfx
+<position of effect>	String	N/A	The world position of the effect
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<forward vector>	String	N/A	The forward vector of the effect
+<up vector>	String	N/A	The up vector of the effect
+
+Example
+fx = playFX (enginesmoke, engine.origin);
+playFX_END
+
+playFXOnTag_START
+playFXOnTag( <effect id>, <entity>, <tag name> );
+
+Summary
+Play this effect on the entity and tag.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<effect id>	String	N/A	The effect id returned by loadfx
+<entity>	String	N/A	The entity to attach the effect to
+<tag name>	String	N/A	Tag name to attach the effect to
+
+Example
+fx = playfxontag(id, ent, tag);
+playFXOnTag_END
+
+playLoopedFX_START
+playLoopedFX( <effect id>, <repeat delay>, <position>, <cull distance>, <forward>, <up> );
+
+Summary
+Play this effect in a loop.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<effect id>	String	N/A	The effect id returned by loadfx.
+<repeat delay>	String	N/A	The delay between each loop.
+<position>	String	N/A	The position of the effect.
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<cull distance>	String	N/A	The culling distance of the effect. 0 means that the effect won't be culled
+<forward>	String	N/A	The forward vector for the effect
+<up>	String	N/A	The up vector for the effect
+
+Example
+fx = playloopedfx(id, ent, tag);
+playLoopedFX_END
+
+setBlur_START
+setBlur( <target_blur>, <time> );
+
+Summary
+Blur the screen over a period of time.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<target_blur>	String	N/A	The final blur. The value is pixels for Gaussian blur at 640x480. Must be a floating point value greater than 0.
+<time>	String	N/A	Time in seconds
+
+Example
+setBlur( 10.3, 3.0 );
+setBlur_END
+
+setVolFog_START
+setVolFog( <startDist>, <halfwayDist>, <halfwayHeight>, <baseHeight>, <red>, <green>, <blue>, <transitionTime> );
+
+Summary
+Creates an volumetric fog
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<startDist>	Float	N/A	The distance, in world units, at which the fog begins.
+<halfwayDist>	Float	N/A	The distance, beyond the startDist, at which the scene will be 50% fogged.
+<halfwayHeight>	Float	N/A	todo
+<baseHeight>	Float	N/A	todo
+<red>	Float	0.0 to 1.0	The red component of the fog.
+<green>	Float	0.0 to 1.0	The green component of the fog.
+<blue>	Float	0.0 to 1.0	The blue component of the fog.
+<transitionTime>	Float	N/A	Transition time in seconds
+
+Example
+todo
+setVolFog_END
+
+setExpFog_START
+setExpFog( <startDist>, <halfwayDist>, <red>, <green>, <blue>, <transitionTime> );
+
+Summary
+Creates an exponential fog.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<startDist>	Float	N/A	The distance, in world units, at which the fog begins.
+<halfwayDist>	Float	N/A	The distance, beyond the startDist, at which the scene will be 50% fogged.
+<red>	Float	0.0 to 1.0	The red component of the fog.
+<green>	Float	0.0 to 1.0	The green component of the fog.
+<blue>	Float	0.0 to 1.0	The blue component of the fog.
+<transitionTime>	Float	N/A	Transition time in seconds
+
+Example
+None
+setExpFog_END
+
+attach_START
+<entity> attach( <modelname>, <tagname>, <ignoreCollision> );
+
+Summary
+Attach a model to an entity
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<modelname>	String	N/A	The model name to attach (string)
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<tagname>	String	N/A	The tag to attach the model to (string)
+<ignoreCollision>	String	N/A	flag to ignore collision. Defaults to false (integer)
+
+Example
+self attach("xmodel/panzerflak_ammo", "tag_weapon_left");
+attach_END
+
+delete_START
+<entity> delete();
+
+Summary
+Removes an entity from the game in the same manner as a trigger_kill"
+
+Call on
+An Entity
+
+Example
+thing delete();
+delete_END
+
+detach_START
+<entity> detach( <modelname>, <tagname> );
+
+Summary
+detaches an attached model from an entity
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<modelname>	String	N/A	The model name to detach (string)
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<tagname>	String	N/A	The tag to detach the model from (string)
+
+Example
+self detach("xmodel/explosivepack", "tag_weapon_right");
+detach_END
+
+detachAll_START
+<entity> detachAll();
+
+Summary
+detaches all attached models from an entity
+
+Call on
+An Entity
+
+Example
+self detachAll();
+detachAll_END
+
+disableAimAssist_START
+<entity> disableAimAssist();
+
+Summary
+Disables aim assist on an entity. The entity must have a brush model
+
+Call on
+An Entity
+
+Example
+self disableAimAssist();
+disableAimAssist_END
+
+doDamage_START
+<entity> doDamage( <health>, <source position> );
+
+Summary
+Does damage to this entity
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<health>	String	N/A	The amount of damage to do
+<source position>	String	N/A	The position that the damage comes from
+
+Example
+tank doDamage( tank.health + 200, (0,0,0) );
+doDamage_END
+
+dontInterpolAte_START
+<entity> dontInterpolAte();
+
+Summary
+pop the entity's position instantaneously to where it moves this time step, rather than smoothly moving there from the previous position
+
+Call on
+An Entity
+
+Example
+entity dontInterpolate();
+dontInterpolAte_END
+
+enableAimAssIst_START
+<entity> enableAimAssIst();
+
+Summary
+Enables aim assist on an entity. The entity must have a brush model
+
+Call on
+An Entity
+
+Example
+self enableAimAssIst();
+enableAimAssIst_END
+
+enableLinkTo_START
+<entity> enableLinkTo();
+
+Summary
+enables linkto for an entity
+
+Call on
+An Entity
+
+Example
+self.bombtrigger enableLinkTo();
+enableLinkTo_END
+
+getAttachIgnoreCollision_START
+<entity> getAttachIgnoreCollision( <modelindex> );
+
+Summary
+Returns the ignore collision flag of the attached model at the given attachment slot
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<modelindex>	String	N/A	The index of the model attached to the entity, starting at 0, so for instance 3 will get the fourth model attached. (integer)
+
+Example
+self getAttachIgnoreCollision(index);
+getAttachIgnoreCollision_END
+
+getAttachModelName_START
+<entity> getAttachModelName( <modelindex> );
+
+Summary
+Returns the name of the attached model at the given attachment slot
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<modelindex>	String	N/A	The index of the model attached to the entity, starting at 0, so for instance 3 will get the fourth model attached. (integer)
+
+Example
+self getAttachModelName(index);
+getAttachModelName_END
+
+getAttachSize_START
+<entity> getAttachSize();
+
+Summary
+Returns the number of attached models for this entity
+
+Call on
+An Entity
+
+Example
+self getattachedsize(); //<-- Not correct i know. But this is from the script ref site.
+getAttachSize_END
+
+getAttachTagName_START
+<entity> getAttachTagName( <modelindex> );
+
+Summary
+Returns the tagname of the attached model at the given attachment slot
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<modelindex>	String	N/A	The index of the model attached to the entity, starting at 0, so for instance 3 will get the fourth model attached. (integer)
+
+Example
+self getAttachTagName(index);
+getAttachTagName_END
+
+getEnt_START
+getEnt( <name>, <key> );
+
+Summary
+Looks up entities by key and name
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<name>	String	N/A	name to search for
+<key>	String	N/A	key that name goes with
+
+Example
+spawner = getEnt("doorguy1","targetname");
+getEnt_END
+
+getEntArray_START
+getEntArray( <name>, <key> );
+
+Summary
+Gets an array of entities that have the given key, name pair.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<name>	String	N/A	Name to search for.
+<key>	String	N/A	The key to search for.
+
+Example
+aeExplosions = getEntArray (strExplosion, "targetname");
+getEntArray_END
+
+getEntByNum_START
+getEntByNum( <entity number> );
+
+Summary
+Gets an entity from its entity number
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<entity number>	String	N/A	integer) The number of the entity to get
+
+Example
+entity = getEntByNum( entnum );
+getEntByNum_END
+
+getEntityNumber_START
+<entity> getEntityNumber();
+
+Summary
+Get the entity number of this entity
+
+Call on
+An Entity
+
+Example
+selfnum = self getEntityNumber();
+getEntityNumber_END
+
+getEntNum_START
+<entity> getEntNum();
+
+Summary
+Get the entity number for this entity
+
+Call on
+An Entity
+
+Example
+self getEntNum();
+getEntNum_END
+
+getNormalHealth_START
+<entity> getNormalHealth();
+
+Summary
+Gets the normal health of this entity
+
+Call on
+An Entity
+
+Example
+health = entity getNormalHealth();
+getNormalHealth_END
+
+getOrigin_START
+<entity> getOrigin();
+
+Summary
+Gets the origin of an entity
+
+Call on
+An Entity
+
+Example
+origin = self getOrigin();
+getOrigin_END
+
+hide_START
+<entity> hide();
+
+Summary
+Hides a visible entity
+
+Call on
+An Entity
+
+Example
+brokenwindow hide();
+hide_END
+
+isTouching_START
+<entity> isTouching( <touched entity> );
+
+Summary
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<touched entity>	String	N/A	The entity that is to be tested against
+
+Example
+if (level.player isTouching (self))...
+isTouching_END
+
+launch_START
+<entity> launch( <initial velocity> );
+
+Summary
+Launch an object that interacts with the world, using an initial velocity. From this point on this object will no longer block either missiles or bullets.
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<initial velocity>	String	N/A	The initial velocity of the launch.
+
+Example
+self launch ( ( x, y, z ) );
+launch_END
+
+linkTo_START
+<entity> linkTo( <linkto entity>, <tag>, <originOffset>, <anglesOffset> );
+
+Summary
+Attaches one entity to another
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<linkto entity>	String	N/A	The entity to attach this thing to
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<tag>	String	N/A	The tag to attach the entity to
+<originOffset>	String	N/A	The positional offset from the base position
+<anglesOffset>	String	N/A	The angular offset from the base angles
+
+Example
+self.rightturret linkTo( self, "tag_gunRight", (0,0,0), (0,0,0) );
+linkTo_END
+
+localToWorldCoords_START
+<entity> localToWorldCoords( <local coordinate> );
+
+Summary
+Transform the given local coordinate point to a world coordinate point
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<local coordinate>	String	N/A	The point in local coordinates
+
+Example
+ramboPoint = self localToWorldCoords( delta );
+localToWorldCoords_END
+
+lockLightVis_START
+<entity> lockLightVis();
+
+Summary
+Locks the lights that are visible by this entity to reduce the calculations for fast entities
+
+Call on
+An Entity
+
+Example
+spawn lockLightVis();
+lockLightVis_END
+
+setContents_START
+<entity> setContents( <contents> );
+
+Summary
+Sets the contents of an entity. Returns the old contents.
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<contents>	String	N/A	an integer describing the contents of this entity
+
+Example
+None
+setContents_END
+
+setCursorHint_START
+<entity> setCursorHint( <hint> );
+
+Summary
+Sets a visible cursor near to an objective
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<hint>	String	N/A	one of the following strings: "HINT_NONE", "HINT_ACTIVATE", "HINT_HEALTH", "HINT_FRIENDLY"
+
+Example
+None
+setCursorHint_END
+
+setHintString_START
+<entity> setHintString( <string> );
+
+Summary
+Sets the hint string for a usable entity
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<string>	String	N/A	The string to use for a hint near a usable entity
+
+Example
+fuel_lever setHintString (&"ROCKET_FUEL_LEVER");
+setHintString_END
+
+setLookAtText_START
+<entity> setLookAtText( <lookat text line 1>, <lookat text line 2> );
+
+Summary
+Set look at text for entity.
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<lookat text line 1>	String	N/A	The unlocalized look at text for this entity. Line is green and usually a name
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<lookat text line 2>	String	N/A	The localized look at text for this entity. Line is white and usually a type
+
+Example
+None
+setLookAtText_END
+
+setModel_START
+<entity> setModel( <model name> );
+
+Summary
+Sets the model of the entity to the given model name
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<model name>	String	N/A	The name of the model to set this entity to
+
+Example
+splinter setModel("xmodel/wood_plank2");
+setModel_END
+
+setNormalHealth_START
+<entity> setNormalHealth( <health> );
+
+Summary
+Sets the normal health of this entity
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<health>	String	N/A	The new normal health
+
+Example
+self setNormalHealth ((self.maxhealth - self.damageTaken) / self.maxHealth);
+setNormalHealth_END
+
+setShadowHint_START
+<entity> setShadowHint( <prority> );
+
+Summary
+Sets the shadow hint for the entity
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<prority>	String	N/A	"normal", "never", "high_priority", "low_priority", "always", or "receiver".
+
+Example
+tankgun setShadowHint( "normal" );
+setShadowHint_END
+
+setStableMissile_END
+<entity> setStableMissile( <stablemissileflag> );
+
+Summary
+This entity will shoot missiles that do not destabilize. Only applicable to vehicles, players and AI
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<stablemissileflag>	String	N/A	True if the entity shoots stable missiles
+
+Example
+None
+setStableMissile_END
+
+show_START
+<entity> show();
+
+Summary
+Shows a hidden entity
+
+Call on
+An Entity
+
+Example
+brokenwindow show();
+show_END
+
+unlink_START
+<entity> unlink();
+
+Summary
+Unlinks a linked entity from another entity
+
+Call on
+An Entity
+
+Example
+guy unlink();
+unlink_END
+
+unlockLightVis_START
+<entity> unlockLightVis();
+
+Summary
+Unlocks the lights that are visible by this entity
+
+Call on
+An Entity
+
+Example
+spawn unlockLightVis();
+unlockLightVis_END
+
+useBy_START
+<entity> useBy( <using entity> );
+
+Summary
+Uses the entity with the passed in entity as the activator
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<using entity>	String	N/A	The entity that is using the other entity
+
+Example
+level.ArmoredCar.turret useBy (level.player);
+useBy_END
+
+destroy_START
+<hud> destroy();
+
+Summary
+Remove this Hud element altogether.
+
+Call on
+hud
+
+Example
+self.bombstopwatch destroy();
+destroy_END
+
+fadeOverTime_START
+<hud> fadeOverTime( <time> );
+
+Summary
+Set a hud element to transition in color (or alpha) over time. Normally setting the color (or alpha) of an element causes an immediate visual change. However, if the color (or alpha) gets set within after calling fadeOverTime, then the hud element will transition to the new color over the remaining <time>.
+
+Call on
+hud
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<time>	String	N/A	The time to fade the element in seconds
+
+Example
+level.introstring1 fadeOverTime(1.2);  level.introstring1.alpha = 0.3;  This will transition the alpha from whatever it was before to the new value of 0.3 over 1.2 seconds.
+fadeOverTime_END
+
+moveOverTime_START
+<hud> moveOverTime( <time> );
+
+Summary
+Set a hud element to move over time.
+
+Call on
+hud
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<time>	String	N/A	The time to move the element in seconds
+
+Example
+newStr moveOverTime(timer);
+moveOverTime_END
+
+reset_START
+<hud> reset();
+
+Summary
+Reset a HUD element to its default state.
+
+Call on
+hud
+
+Example
+element reset();
+reset_END
+
+scaleOverTime_START
+<hud> scaleOverTime( <time>, <width>, <height> );
+
+Summary
+Set a hud element to scale over time.
+
+Call on
+hud
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<time>	String	N/A	The time to scale the element in seconds
+<width>	String	N/A	The new width of the material.
+<height>	String	N/A	The new height of the material.
+
+Example
+other.progressbar scaleOverTime(level.planttime, level.barsize, 8);
+scaleOverTime_END
+
+setClock_START
+<hud> setClock( <time>, <time>, <material>, <width>, <height> );
+
+Summary
+Set a clock HUD element to count down over a time period.
+
+Call on
+hud
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<time>	String	N/A	The new timer time in seconds to count down
+<time>	String	N/A	The time in seconds represented by a full cycle of the hand, for instance a stopwatch would be 60s.
+<material>	String	N/A	The material for the hud clock
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<width>	String	N/A	The width of the material.
+<height>	String	N/A	The height of the material.
+
+Example
+level.bombstopwatch setClock(5, 60, "hudStopwatch", 64, 64);
+setClock_END
+
+setClockUp_START
+<hud> setClockUp( <time>, <full time>, <material>, <width>, <height> );
+
+Summary
+Set a clock HUD element to count up over a time period.
+
+Call on
+hud
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<time>	String	N/A	The new timer time in seconds to count up
+<full time>	String	N/A	The time in seconds represented by a full cycle of the hand, for instance a stopwatch would be 60s.
+<material>	String	N/A	The material for the hud clock
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<width>	String	N/A	The width of the material.
+<height>	String	N/A	The height of the material.
+
+Example
+level.bombstopwatch setClockUp(5, 60, "hudStopwatch", 64, 64);
+setClockUp_END
+
+setShader_START
+<hud> setShader( <materialname>, <width>, <height> );
+
+Summary
+Set the material for this Hud Element
+
+Call on
+hud
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<materialname>	String	N/A	A the name of the material to set
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<width>	String	N/A	The width of the material.
+<height>	String	N/A	The height of the material.
+
+Example
+waypoint setShader("playbook_objective_stop", 15, 15);
+setShader_END
+
+setTenthsTimer_START
+<hud> setTenthsTimer( <time> );
+
+Summary
+Set a timer HUD element to count down in tenths of a second
+
+Call on
+hud
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<time>	String	N/A	The new timer time
+
+Example
+self.kc_timer setTenthsTimer(self.archivetime - delay);
+setTenthsTimer_END
+
+setTenthsTimerUp_START
+<hud> setTenthsTimerUp( <time> );
+
+Summary
+Set a timer HUD element to count up in tenths of a second
+
+Call on
+hud
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<time>	String	N/A	The new timer time
+
+Example
+self.kc_timer setTenthsTimerUp(self.archivetime - delay);
+setTenthsTimerUp_END
+
+setText_START
+<hud> setText( <text> );
+
+Summary
+Set HUD text for this element.
+
+Call on
+hud
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<text>	String	N/A	A localized text reference
+
+Example
+level.introstring1 setText(string1);
+setText_END
+
+setTimer_START
+<hud> setTimer( <time> );
+
+Summary
+Set a timer HUD element to count down
+
+Call on
+hud
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<time>	String	N/A	The new timer time
+
+Example
+level.reinforcement_hud setTimer(level.counter)
+setTimer_END
+
+setTimerUp_START
+<hud> setTimerUp( <time> );
+
+Summary
+Set a timer HUD element to count up
+
+Call on
+hud
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<time>	String	N/A	The new timer time
+
+Example
+level.reinforcement_hud setTimerUp(level.counter)
+setTimerUp_END
+
+setValue_START
+<hud> setValue( <value> );
+
+Summary
+Set a value HUD element to a given value.
+
+Call on
+hud
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<value>	String	N/A	The value to set the element to
+
+Example
+llevel.reinforcement_hud setValue(0);
+setValue_END
+
+changeLevel_START
+changeLevel( <mapname>, <persistent>, <exitTime> );
+
+Summary
+Changes to the new level
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<mapname>	String	N/A	The name of the map to change to.
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<persistent>	String	N/A	Flag allowing player to keep their inventory through the transition.
+<exitTime>	String	N/A	Time in seconds of the exit fade.
+
+Example
+changeLevel("burnville", false);
+changeLevel_END
+
+cinematic_START
+cinematic( <cinematic name>, <exitTime> );
+
+Summary
+Play the given cinematic
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<cinematic name>	String	N/A	The cinematic name.
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<exitTime>	String	N/A	Time in seconds of the exit fade.
+
+Example
+cinematic("cod_end");
+cinematic_END
+
+drawCompassFriendlies_START
+drawCompassFriendlies( <drawcompassfriendlies> );
+
+Summary
+Set whether friendlies are shown on the compass
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<drawcompassfriendlies>	String	N/A	A boolean setting whether friendly troops are shown on the compass.
+
+Example
+drawCompassFriendlies(true);
+drawCompassFriendlies_END
+
+earthquake_START
+earthquake( <scale>, <duration>, <source>, <radius> );
+
+Summary
+Create an earthquake at the given point
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<scale>	String	N/A	The scale of the quake.
+<duration>	String	N/A	Duration in seconds.
+<source>	String	N/A	The earthquake origin.
+<radius>	String	N/A	The earthquake radius of effect.
+
+Example
+earthquake(0.3, 3, self.origin, 850);
+earthquake_END
+
+getAllNodes_START
+getAllNodes();
+
+Summary
+Gets all of the nodes in a level
+
+Example
+nodes = getAllNodes();
+getAllNodes_END
+
+getBrushModelCenter_START
+getBrushModelCenter();
+
+Summary
+deprecated - Use GetOrigin
+
+Example
+None
+getBrushModelCenter_END
+
+getDiffuculty_START
+getDiffuculty();
+
+Summary
+Gets the game difficulty - can return values of "easy", "medium", "difficult" and "fu"
+
+Example
+skill = getdifficulty();
+getDiffuculty_END
+
+getNode_START
+getNode( <name>, <key> );
+
+Summary
+Gets a node with the given name, key pair
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<name>	String	N/A	name to search for
+<key>	String	N/A	key that name goes with
+
+Example
+node = getNode (self.target,"targetname");
+getNode_END
+
+getNodeArray_START
+getNodeArray( <name>, <key> );
+
+Summary
+Gets an array of nodes that have the given name, key pair
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<name>	String	N/A	name to search for
+<key>	String	N/A	key that name goes with
+
+Example
+node = getNodeArray (self.target,"targetname");
+getNodeArray_END
+
+getNorthYaw_START
+getNorthYaw();
+
+Summary
+Returns the yaw value of North
+
+Example
+northYaw = getNorthYaw();
+getNorthYaw_END
+
+getTime_START
+getTime();
+
+Summary
+Gets the level time in Milliseconds from the start of the level
+
+Example
+nextNodeTime = getTime() + 500
+getTime_END
+
+missionFailed_START
+missionFailed();
+
+Summary
+Does the same thing as the player being killed
+
+Example
+missionFailed();
+missionFailed_END
+
+missionSuccess_START
+missionSuccess( <mapname>, <persistent> );
+
+Summary
+Transitions to a new level via a mission success page
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<mapname>	String	N/A	The name of the map to change to.
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<persistent>	String	N/A	Flag allowing player to keep their inventory through the transition.
+
+Example
+missionSuccess("tankdrivetown",false);
+missionSuccess_END
+
+resetSunLight_START
+resetSunLight();
+
+Summary
+Restores the map's default sunlight values.
+
+Example
+setSunLight(1.2, 1.2, 0.4); //<-- Not correct i know. But this is from the script ref site.
+resetSunLight_END
+
+setCullDist_START
+setCullDist( <cull distance> );
+
+Summary
+Set the cull distance for a level
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<cull distance>	String	N/A	The cull distance
+
+Example
+setCullDist(7200);
+setCullDist_END
+
+setMissionDvar_START
+setMissionDvar();
+
+Summary
+changes the value of the specified mission dvar
+
+Example
+setMissionDvar("mission_01", 1);
+setMissionDvar_END
+
+setSunLight_START
+setSunLight( <red>, <green>, <blue> );
+
+Summary
+Overrides the sun color for a level. Use 'resetsunlight' to revert to the map's values.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<red>	String	N/A	The red component of sunlight color. 0 is black, 1 is fullbright, more than 1 is overbright.
+<green>	String	N/A	The green component of sunlight color. 0 is black, 1 is fullbright, more than 1 is overbright.
+<blue>	String	N/A	The blue component of sunlight color. 0 is black, 1 is fullbright, more than 1 is overbright.
+
+Example
+setSunLight(1.2, 1.2, 0.4);
+setSunLight_END
+
+acos_START
+acos( <cos value> );
+
+Summary
+Returns an angle corresponding to a particular cosine value
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<cos value>	String	N/A	A cosine value
+
+Example
+upAngle = acos(distanceratio);
+acos_END
+
+asin_START
+asin( <sin value> );
+
+Summary
+Returns an angle corresponding to a particular sin value
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<sin value>	String	N/A	A sin value
+
+Example
+upAngle = asin(upAmount);
+asin_END
+
+atan_START
+atan( <tan value> );
+
+Summary
+Returns an angle corresponding to a particular tangential value
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<tan value>	String	N/A	A tangential value
+
+Example
+upAngle = atan(height/distance);
+atan_END
+
+cos_START
+cos( <angle> );
+
+Summary
+Returns the cos of an angle
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<angle>	String	N/A	An angle in degrees
+
+Example
+frac = cos(degrees);
+cos_END
+
+int_START
+int( <value> );
+
+Summary
+Casts a floating point number or a string to an integer
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<value>	String	N/A	A string or floating point number to cast to an integer
+
+Example
+x = int(self.HUDHealthHeight);
+int_END
+
+randomFloat_START
+randomFloat( <max> );
+
+Summary
+Returns a random floating point number r, where 0 <= r < max
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<max>	String	N/A	The maximum floating point size
+
+Example
+if (randomFloat(100) > 50)...
+randomFloat_END
+
+randomFloatRange_START
+randomFloatRange( <min>, <max> );
+
+Summary
+Returns a random floating point number r, where min <= r < max
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<min>	String	N/A	The minimum result
+<max>	String	N/A	The maximum result
+
+Example
+rand = randomFloatRange(3.0,5.0);
+randomFloatRange_END
+
+randomInt_START
+randomInt( <max> );
+
+Summary
+Returns a random integer between 0 and max-1 inclusive
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<max>	String	N/A	The maximum integer size
+
+Example
+if (randomInt(100) > 50)...
+randomInt_END
+
+randomIntRange_START
+randomIntRange( <min>, <max> );
+
+Summary
+Returns a random integer r, where min <= r < max
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<min>	String	N/A	The minimum result
+<max>	String	N/A	The maximum result + 1
+
+Example
+rand = randomIntRange(3,5);
+randomIntRange_END
+
+sin_START
+sin( <angle> );
+
+Summary
+Returns the sin of an angle
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<angle>	String	N/A	An angle in degrees
+
+Example
+frac = sin(degrees);
+sin_END
+
+tan_START
+tan( <angle> );
+
+Summary
+Returns the tan of an angle
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<angle>	String	N/A	An angle in degrees
+
+Example
+frac = tan(degrees);
+tan_END
+
+moveGravity_START
+<entity> moveGravity( <initial velocity>, <time> );
+
+Summary
+Fling this entity.
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<initial velocity>	String	N/A	The initial velocity to fling this entity at
+<time>	String	N/A	The time to move the entity in seconds
+
+Example
+self moveGravity(break_vector, time);
+moveGravity_END
+
+moveTo_START
+<entity> moveTo( <point>, <time>, <time>, <time> );
+
+Summary
+Move this entity to the given point.
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<point>	String	N/A	The point to move the entity to
+<time>	String	N/A	The time to move the entity in seconds
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<time>	String	N/A	The time spent accelerating
+<time>	String	N/A	The time spent decelerating
+
+Example
+dummy moveTo(dest_org, .5, .05, .05);
+moveTo_END
+
+moveX_START
+<entity> moveX( <point>, <time>, <acceleration time>, <deceleration time> );
+
+Summary
+Move this entity to the given world z value
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<point>	String	N/A	The z value to move the entity to, as a floating point number
+<time>	String	N/A	The time to move the entity in seconds
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<acceleration time>	String	N/A	The time spent accelerating in seconds
+<deceleration time>	String	N/A	The time spent decelerating in seconds
+
+Example
+None
+moveX_END
+
+notSolid_START
+<entity> notSolid();
+
+Summary
+Unsets the solid flag, so that this object is no longer collidable.
+
+Call on
+An Entity
+
+Example
+self notSolid();
+notSolid_END
+
+rotatePitch_START
+<entity> rotatePitch( <pitch angle>, <time>, <acceleration time>, <deceleration time> );
+
+Summary
+Rotate this entity to the given pitch
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<pitch angle>	String	N/A	The new pitch angle in degrees
+<time>	String	N/A	The time to rotate in seconds
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<acceleration time>	String	N/A	The time spent accelerating in seconds
+<deceleration time>	String	N/A	The time spent decelerating in seconds
+
+Example
+None
+rotatePitch_END
+
+rotateRoll_START
+<entity> rotateRoll( <roll angle>, <time>, <acceleration time>, <deceleration time> );
+
+Summary
+Rotate this entity to the given roll angle
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<roll angle>	String	N/A	The new roll angle in degrees
+<time>	String	N/A	The time to rotate in seconds
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<acceleration time>	String	N/A	The time spent accelerating in seconds
+<deceleration time>	String	N/A	The time spent decelerating in seconds
+
+Example
+self rotateRoll((2*1500 + 3*randomfloat(2500)) * -1, 5,0,0);
+rotateRoll_END
+
+rotateTo_START
+<entity> rotateTo( <angles>, <time>, <acceleration time>, <deceleration time> );
+
+Summary
+Rotate this entity to the given world rotation value
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<angles>	String	N/A	The new world angle to rotate to
+<time>	String	N/A	The time to rotate in seconds
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<acceleration time>	String	N/A	The time spent accelerating in seconds
+<deceleration time>	String	N/A	The time spent decelerating in seconds
+
+Example
+None
+rotateTo_END
+
+rotateVelocity_START
+<entity> rotateVelocity( <rotate velocity>, <time>, <acceleration time>, <deceleration time> );
+
+Summary
+Rotate this entity at a particular velocity for a given time
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<rotate velocity>	String	N/A	The rotational velocity to rotate
+<time>	String	N/A	The time to rotate in seconds
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<acceleration time>	String	N/A	The time spent accelerating in seconds
+<deceleration time>	String	N/A	The time spent decelerating in seconds
+
+Example
+self rotateVelocity((x,y,z), 12);
+rotateVelocity_END
+
+rotateYaw_START
+<entity> rotateYaw( <yaw angle>, <time>, <acceleration time>, <deceleration time> );
+
+Summary
+Rotate this entity to the given yaw
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<yaw angle>	String	N/A	The new yaw angle in degrees
+<time>	String	N/A	The time to rotate in seconds
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<acceleration time>	String	N/A	The time spent accelerating in seconds
+<deceleration time>	String	N/A	The time spent decelerating in seconds
+
+Example
+None
+rotateYaw_END
+
+solid_START
+<entity> solid();
+
+Summary
+Set the solid flag, so that this object is collidable.
+
+Call on
+An Entity
+
+Example
+self solid();
+solid_END
+
+vibrate_START
+vibrate( <direction vector>, <amplitude>, <period>, <time> );
+
+Summary
+Causes a script entity to vibrate, rotating around its origin, along a given vector dir
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<direction vector>	String	N/A	The direction of the vibration
+<amplitude>	String	N/A	The amount of the vibration in degrees
+<period>	String	N/A	The period of the vibration in seconds
+<time>	String	N/A	The length of time of the vibration in seconds
+
+Example
+self vibrate(directionVir, 0.3, 0.4, 1.0);
+vibrate_END
+
+objective_add_START
+objective_add( <objective_number>, <state>, <text>, <position>, <iconshader> );
+
+Summary
+Adds a new objective
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<objective_number>	String	N/A	The number of the objective to add
+<state>	String	N/A	A string value representing the state of the objective. Valid states are "empty", "active", "invisible", "done", "current" and "failed"
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<text>	String	N/A	The text to use for the objective. This should be a valid localized text reference
+<position>	String	N/A	The position of the objective
+<iconshader>	String	N/A	The objective icon to embed
+
+Example
+objective_add(objective_number, "active", objective_text, (closest.bomb.origin));
+objective_add_END
+
+objective_additionalCurrent_START
+objective_additionalCurrent( <objective_index>, <objective_index> );
+
+Summary
+Add additional objective(s) to the set of objectives currently being done. If none specified, there's no effect.Current objectives that are not specified are not affected by this call. Meant to be used when there are already current objective(s), but one or more additional objectives need to be made current in addition to the previously current objectives.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<objective_index>	String	N/A	The ID of the objective to set current.
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<objective_index>	String	N/A	Any number of additional IDs to set current.
+
+Example
+objective_additionalCurrent(level.flakObjectiveID);
+objective_additionalCurrent_END
+
+objective_additionalPosition_START
+objective_additionalPosition( <objective_index>, <position_index>, <position> );
+
+Summary
+Set an additional position for objectives with multiple positions
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<objective_index>	String	N/A	The ID of the objective to alter
+<position_index>	String	N/A	The position of the objective
+<position>	String	N/A	The position of the objective
+
+Example
+objective_additionalPosition(level.mortarObjNumber, ent.index, nMortarCarrier.origin);
+objective_additionalPosition_END
+
+objective_current_START
+objective_current( <objective_index>, <objective_index> );
+
+Summary
+Set which objective(s) are currently being done. If none specified, there's no current objective. Current objectives that are not specified to still be current, are set to active.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<objective_index>	String	N/A	The ID of the objective to set current.
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<objective_index>	String	N/A	Any number of additional IDs to set current.
+
+Example
+objective_current( aHardpointObjectives[0].obj, aHardpointObjectives[1].obj, aHardpointObjectives[2].obj );
+objective_current_END
+
+objective_delete_START
+objective_delete( <objective_number> );
+
+Summary
+Removes an objective
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<objective_number>	String	N/A	The number of the objective to remove
+
+Example
+objective_delete(1);
+objective_delete_END
+
+objective_icon_START
+objective_icon( <objective_number>, <icon> );
+
+Summary
+Set the compass icon for an objective
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<objective_number>	String	N/A	The ID of the objective to alter
+<icon>	String	N/A	A compass icon
+
+Example
+objective_icon(0, game["radio_none"]);
+objective_icon_END
+
+objective_position_START
+objective_position( <objective_number>, <position> );
+
+Summary
+Set the position of an objective, assumed to be the zeroth position, must use objective_additionalposition to set a different position index
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<objective_number>	String	N/A	The ID of the objective to alter
+<position>	String	N/A	The position of the objective
+
+Example
+objective_position(4, get_objective_position("plant_boilerbomb_trigger"));
+objective_position_END
+
+objective_ring_START
+objective_ring( <objective_index> );
+
+Summary
+Triggers a ring on the objective.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<objective_index>	String	N/A	The ID of the ring.
+
+Example
+objective_ring(level.mortarObjNumber);
+objective_ring_END
+
+objective_state_START
+objective_state( <objective_number>, <state> );
+
+Summary
+Sets the state of an objective
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<objective_number>	String	N/A	The number of the objective to alter
+<state>	String	N/A	A string value representing the state of the objective. Valid states are "empty", "active", "invisible", "done", "current" and "failed"
+
+Example
+objective_state(8, "done");
+objective_state_END
+
+objective_string_START
+objective_string( <objective_number>, <string> );
+
+Summary
+Set the description string for an objective
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<objective_number>	String	N/A	The ID of the objective to alter
+<string>	String	N/A	One or more (localised) objective strings
+
+Example
+objective_string(index, &"SCRIPT_OBJ_DESTROYFLAKPANZERS", level.flaks_remaining);
+objective_string_END
+
+objective_string_NoMessage_START
+objective_string_NoMessage( <objective_number>, <string> );
+
+Summary
+Set the description string for an objective, without posting an "objectives updated" message
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<objective_number>	String	N/A	The ID of the objective to alter
+<string>	String	N/A	One or more (localised) objective strings
+
+Example
+objective_string_NoMessage(index, &"SCRIPT_OBJ_DESTROYFLAKPANZERS", level.flaks_remaining);
+objective_string_NoMessage_END
+
+allowCrouch_START
+<player> allowCrouch( <player crouch> );
+
+Summary
+Sets whether the player can crouch
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<player crouch>	String	N/A	A boolean. true if the player can crouch, and false otherwise
+
+Example
+level.player allowCrouch(false);
+allowCrouch_END
+
+allowLeanLeft_START
+<player> allowLeanLeft( <player lean left> );
+
+Summary
+Sets whether the player can lean left
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<player lean left>	String	N/A	A boolean. true if the player can lean left, and false otherwise
+
+Example
+level.player allowLeanLeft(false);
+allowLeanLeft_END
+
+allowLeanRight_START
+<player> allowLeanRight( <player lean right> );
+
+Summary
+Sets whether the player can lean right
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<player lean right>	String	N/A	A boolean. true if the player can lean right, and false otherwise
+
+Example
+level.player allowLeanRight(false);
+allowLeanRight_END
+
+allowProne_START
+<player> allowProne( <player prone> );
+
+Summary
+Sets whether the player can go prone
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<player prone>	String	N/A	A boolean. true if the player can go prone, and false otherwise
+
+Example
+level.player allowProne(false);
+allowProne_END
+
+allowStand_START
+<player> allowStand( <player stand> );
+
+Summary
+Sets whether the player can stand up
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<player stand>	String	N/A	A boolean. true if the player can stand, and false otherwise
+
+Example
+level.player allowStand(false);
+allowStand_END
+
+attackButtonPressed_START
+<player> attackButtonPressed();
+
+Summary
+Check if the player is pressing the 'attack' button.
+
+Call on
+A Player
+
+Example
+while(self attackButtonPressed())...;
+attackButtonPressed_END
+
+buttonPressed_START
+<player> buttonPressed();
+
+Summary
+Check if the player is pressing the button/key, "BUTTON_A", "BUTTON_B", "K
+
+Call on
+A Player
+
+Example
+while(self buttonPressed("BUTTON_A"))...;
+buttonPressed_END
+
+closeMenu_START
+<player> closeMenu();
+
+Summary
+Close the current player menu
+
+Call on
+A Player
+
+Example
+player closeMenu();
+closeMenu_END
+
+deactivateChannelVolumes_START
+<player> deactivateChannelVolumes( <priority>, <fade time> );
+
+Summary
+deactivate the channel volumes for the player on the given priority level
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<priority>	String	N/A	Valid priorities are "snd_channelvolprio_holdbreath", "snd_channelvolprio_pain", or "snd_channelvolprio_shellshock".
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<fade time>	String	N/A	the time spent fading to the next lowest active channelvol priority level in seconds.
+
+Example
+level.player deactivateReverb("snd_enveffectsprio_level", 3);
+deactivateChannelVolumes_END
+
+deactivateReverb_START
+<player> deactivateReverb( <priority>, <fade time> );
+
+Summary
+deactivate the sound reverberation for the player on the given priority level
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<priority>	String	N/A	Valid priorities are "snd_enveffectsprio_level" or "snd_enveffectsprio_shellshock".
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<fade time>	String	N/A	the time spent fading to the next lowest active reverb priority level in seconds.
+
+Example
+level.player deactivateReverb("snd_enveffectsprio_level", 3);
+deactivateReverb_END
+
+enableHealthShield_START
+<player> enableHealthShield( <enable> );
+
+Summary
+Sets whether the player's health shield is active
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<enable>	String	N/A	A boolean. true to enable the health shield, and false otherwise
+
+Example
+level.player enableHealthShield(false);
+enableHealthShield_END
+
+freezeControls_START
+<player> freezeControls( <freeze state> );
+
+Summary
+Blocks or unblocks control input from this player
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<freeze state>	String	N/A	true if the player's controls are frozen, false otherwise.
+
+Example
+level.player freezeControls(true);
+freezeControls_END
+
+getCurrentOffHand_START
+<player> getCurrentOffHand();
+
+Summary
+Gets the player's current off-hand weapon( usually a grenade).
+
+Call on
+A Player
+
+Example
+currentweapon = level.player getCurrentOffHand();
+getCurrentOffHand_END
+
+getCurrentWeapon_START
+<player> getCurrentWeapon();
+
+Summary
+Gets the players current weapon.
+
+Call on
+A Player
+
+Example
+currentweapon = level.player getCurrentWeapon();
+getCurrentWeapon_END
+
+getFractionMaxAmmo_START
+<player> getFractionMaxAmmo( <weapon name> );
+
+Summary
+Return the player's current ammunition amount as a fraction of the weapon's maximum ammunition
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<weapon name>	String	N/A	The weapon name (a string)
+
+Example
+self getFractionMaxAmmo("mosin_nagant");
+getFractionMaxAmmo_END
+
+getFractionStartAmmo_START
+<player> getFractionStartAmmo( <weapon name> );
+
+Summary
+Return the player's current ammunition amount as a fraction of the weapon's starting ammunition
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<weapon name>	String	N/A	The weapon name (a string)
+
+Example
+self getFractionStartAmmo("mosin_nagant");
+getFractionStartAmmo_END
+
+getNormalizedMovemEnt_START
+<player> getNormalizedMovemEnt();
+
+Summary
+Get the player's normalized movement vector. Returns [-1,1] for X(forward) and Y(right) based on player's input.
+
+Call on
+A Player
+
+Example
+movement = self getNormalizedMovemEnt();
+getNormalizedMovemEnt_END
+
+getPlayerAngles_START
+<player> getPlayerAngles();
+
+Summary
+Get the player's angles
+
+Call on
+A Player
+
+Example
+angles = level.player getPlayerAngles();
+getPlayerAngles_END
+
+getStance_START
+<player> getStance();
+
+Summary
+Gets the stance of the player. It only works for the player. Possible return values are 'crouch', 'prone' and 'stand'
+
+Call on
+A Player
+
+Example
+if (level.player getStance() == "crouch")...
+getStance_END
+
+getStance_START
+<player> getStance();
+
+Summary
+Gets the stance of the player. It only works for the player. Possible return values are 'crouch', 'prone' and 'stand'
+
+Call on
+A Player
+
+Example
+if (level.player getStance() == "crouch")...
+getStance_END
+
+getWeaponsListPrimaries_START
+primariesList = <player> getWeaponsListPrimaries();
+
+Summary
+Gets the list of primary weapons in the player's inventory (ignores offhand weapons such as grenades or C4).
+
+Call on
+A Player
+Return value
+Name	Data Type	Return value	Additional Information
+primariesList	Array	N/A	Array of primary weapons in the player's inventory.
+
+Example
+None
+getWeaponsListPrimaries_END
+
+getWeaponSlotAmmo_START
+<player> getWeaponSlotAmmo( <weapon slot> );
+
+Summary
+Gets the ammo count for the weapon in the given slot.
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<weapon slot>	String	N/A	Valid weaponslots are "primary" and "primaryb".
+
+Example
+ammo = level.player getWeaponSlotAmmo("primary");
+getWeaponSlotAmmo_END
+
+getWeaponSlotClipAmmo_START
+<player> getWeaponSlotClipAmmo( <weapon slot> );
+
+Summary
+Gets the ammunition in the clip for the weapon in the given weapon slot.
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<weapon slot>	String	N/A	Valid weaponslots are "primary" and "primaryb".
+
+Example
+ammo = level.player getWeaponSlotClipAmmo("primary");
+getWeaponSlotClipAmmo_END
+
+getWeaponSlotWeapon_START
+<player> getWeaponSlotWeapon( <weapon slot> );
+
+Summary
+Gets the name of the weapon in the given weapon slot.
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<weapon slot>	String	N/A	Valid weaponslots are "primary" and "primaryb".
+
+Example
+playerWeapon[0] = level.player getWeaponSlotWeapon("primary");
+getWeaponSlotWeapon_END
+
+giveMaxAmmo_START
+<player> giveMaxAmmo( <weapon name> );
+
+Summary
+Set the player's ammunition to the weapon's maximum ammunition
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<weapon name>	String	N/A	The weapon name (a string)
+
+Example
+self giveMaxAmmo(self.pers["weapon"]);
+giveMaxAmmo_END
+
+giveStartAmmo_START
+<player> giveStartAmmo( <weapon name> );
+
+Summary
+Set the player's ammunition to the weapon's default starting ammunition
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<weapon name>	String	N/A	The weapon name (a string)
+
+Example
+None
+giveStartAmmo_END
+
+giveWeapon_START
+<player> giveWeapon( <weapon name> );
+
+Summary
+Give the player a weapon
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<weapon name>	String	N/A	The weapon name to give to the player
+
+Example
+level.player giveWeapon("m1garand");
+giveWeapon_END
+
+hasWeapon_START
+<player> hasWeapon( <weapon name> );
+
+Summary
+Checks whether the player has the given weapon.
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<weapon name>	String	N/A	The weapon name (a string)
+
+Example
+if(level.player hasWeapon("Panzerfaust"))...;
+hasWeapon_END
+
+isFiring_START
+<player> isFiring();
+
+Summary
+Returns true if the player is currently using a weapon
+
+Call on
+A Player
+
+Example
+level.player isFiring()
+isFiring_END
+
+isLookingAt_START
+<player> isLookingAt( <entity> );
+
+Summary
+Returns true if the entity is the same as the player's lookat entity
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<entity>	String	N/A	An entity.
+
+Example
+level.player isLookingAt( trigger );
+isLookingAt_END
+
+isMeleeing_START
+<player> isMeleeing();
+
+Summary
+Returns true if the player is currently meleeing
+
+Call on
+A Player
+
+Example
+level.player isMeleeing();
+isMeleeing_END
+
+isOnGround_START
+<player> isOnGround();
+
+Summary
+Returns true if the player is on the ground.
+
+Call on
+A Player
+
+Example
+if(player isOnGround());
+isOnGround_END
+
+isThrowingGrenade_START
+<player> isThrowingGrenade();
+
+Summary
+Returns true if the player is currently throwing a grenade
+
+Call on
+A Player
+
+Example
+level.player isThrowingGrenade();
+isThrowingGrenade_END
+
+meleeButtonPressed_START
+<player> meleeButtonPressed();
+
+Summary
+Check if the player is pressing the 'melee' button.
+
+Call on
+A Player
+
+Example
+while(self meleeButtonPressed())...;
+meleeButtonPressed_END
+
+openMenu_START
+<player> openMenu( <menu> );
+
+Summary
+Open a menu for this player
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<menu>	String	N/A	A string. The name of the menu to open
+
+Example
+self openMenu(game["menu_weapon_allies_only"]);
+openMenu_END
+
+openMenuNoMouse_START
+<player> openMenuNoMouse( <menu> );
+
+Summary
+Open a menu for this player, with no mouse control.
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<menu>	String	N/A	A string. The name of the menu to open
+
+Example
+self openMenuNoMouse(game["menu_weapon_allies_only"]);
+openMenuNoMouse_END
+
+playerADS_START
+<player> playerADS();
+
+Summary
+Return the player's weapon position fraction.
+
+Call on
+A Player
+
+Example
+while(self playerADS()>0.3)...;
+playerADS_END
+
+playerLinkToAbsolute_START
+<player> playerLinkToAbsolute( <lockto entity>, <tag> );
+
+Summary
+Attaches the player to an entity. No view movement is allowed.
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<lockto entity>	String	N/A	The entity to attach the player to
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<tag>	String	N/A	The tag to attach the player to
+
+Example
+level.player playerLinkToAbsolute( vehicle, "tag_player" );
+playerLinkToAbsolute_END
+
+playerLinkToDelta_START
+<player> playerLinkToDelta( <linkto entity>, <tag>, <view fraction> );
+
+Summary
+Attaches the player to an entity. Any entity rotation is added to the player's view, allow the player to look around.
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<linkto entity>	String	N/A	The entity to attach the player to
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<tag>	String	N/A	The tag to attach the player to
+<view fraction>	String	N/A	How much the change in the tag's rotation effects the players view
+
+Example
+level.player playerLinkToDelta (vehicle, "tag_player", 0.5);
+playerLinkToDelta_END
+
+playLocalSound_START
+<player> playLocalSound( <sound name> );
+
+Summary
+Plays a sound locally to the player
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<sound name>	String	N/A	The name of the sound to play.
+
+Example
+players[i] playLocalSound("MP_announcer_round_draw");
+playLocalSound_END
+
+setActionSlot_START
+<player> setActionSlot( <slotID>, <itemType>, <weaponName> );
+
+Summary
+Assign a weaponFile or other action to an actionSlot. actionSlots are the icons with keybinds whcih appear at the bottom of your screen with certain offhand weapons, such as Bouncing Betties or C4.
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<slotID>	Integer	1, 2, 3, 4	The actionSlot index to assign this item to. 4 is closest to the right side of the screen, while 1 is farthest to the left.
+<itemType>	Const String	altmode, nightvision, weapon, or blank.	Match this with the intended purpose of the actionSlot. If you want it to be an alt weapon such as a grenade launcher attachment, use "altmode". This will switch the weapon to whatever weaponFile is set as the altWeapon in the currentWeapon's weaponfile. If you want the actionSlot to set a vision, use "nightivision". Note that for this to work, you must replace the contents of the "nightvision.vision" file in your mod with the desired vision settings. If you want the actionSlot to equip a separate weapon, use "weapon" followed by the weaponFile name. If you want to clear an actionSlot, use a blank itemType ("").
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<weaponName>	String	N/A	Used with itemType "weapon", specifies the weaponFile to equip.
+
+Example
+player setActionSlot(3, "");
+setActionSlot_END
+
+setAutoPickup_START
+<player> setAutoPickup( <auto pickup> );
+
+Summary
+Sets whether the player will automatically pick up pickups.
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<auto pickup>	String	N/A	true if the player will automatically pickup pickups.
+
+Example
+level.player setAutoPickup(true);
+setAutoPickup_END
+
+StartPoisoning_START
+<player> StartPoisoning();
+
+Summary
+ToDo
+
+Call on
+A Player
+
+Example
+player StartPoisoning();
+StartPoisoning_END
+
+StopPoisoning_START
+<player> StopPoisoning();
+
+Summary
+ToDo
+
+Call on
+A Player
+
+Example
+player StopPoisoning();
+StopPoisoning_END
+
+setChannelVolumes_START
+<player> setChannelVolumes( <priority>, <shock name>, <fade time> );
+
+Summary
+Set the channel volumes for the player (a way of fading volumes by type)
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<priority>	String	N/A	Valid priorities are "snd_channelvolprio_holdbreath", "snd_channelvolprio_pain", or "snd_channelvolprio_shellshock".
+<shock name>	String	N/A	string describing the name of the .shock file w/ the channel volumes values to use.
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<fade time>	String	N/A	in seconds.
+
+Example
+level.player setChannelVolumes("snd_channelvolprio_pain", "pain", 1, .7, 3);
+setChannelVolumes_END
+
+setOrigin_START
+<player> setOrigin( <player origin> );
+
+Summary
+Set the player's origin
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<player origin>	String	N/A	The player's origin (a point)
+
+Example
+level.player setOrigin(pltruck.origin);
+setOrigin_END
+
+setPlayerAngles_START
+<player> setPlayerAngles( <player angles> );
+
+Summary
+Set the player's angles
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<player angles>	String	N/A	The player's angles in degrees.
+
+Example
+level.player setPlayerAngles((0,240,0));
+setPlayerAngles_END
+
+setReverb_START
+<player> setReverb( <priority>, <room type>, <dry level>, <wet level>, <fade time> );
+
+Summary
+Set the sound reverberation for the player
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<priority>	String	N/A	Valid priorities are "snd_enveffectsprio_level", or "snd_enveffectsprio_shellshock".
+<room type>	String	N/A	string describing the type of reverb.
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<dry level>	String	N/A	a float from 0 (no source sound) to 1 (full source sound)
+<wet level>	String	N/A	a float from 0 (no effect) to 1 (full effect)
+<fade time>	String	N/A	in seconds and modifies drylevel and wetlevel.
+
+Example
+level.player setReverb("snd_enveffectsprio_level", "stoneroom", 1, .7, 3);
+setReverb_END
+
+setVelocity_START
+<player> setVelocity( <player velocity> );
+
+Summary
+Set the player's velocity
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<player velocity>	String	N/A	The player's velocity (a vector)
+
+Example
+level.player setVelocity(-400,0,100);
+setVelocity_END
+
+setViewModel_START
+<player> setViewModel( <viewmodel name> );
+
+Summary
+Set the player's current view model.
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<viewmodel name>	String	N/A	A viewmodel (string)
+
+Example
+self setViewModel("xmodel/viewmodel_hands_russian_vetrn");
+setViewModel_END
+
+setWeaponClipAmmo_START
+<player> setWeaponClipAmmo( <weapon name>, <ammunition> );
+
+Summary
+Set the weapon clip ammunition for the given weapon.
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<weapon name>	String	N/A	The weapon name for this weapon.
+<ammunition>	String	N/A	The amount of ammunition in the clip.
+
+Example
+level.player setWeaponClipAmmo(true);
+setWeaponClipAmmo_END
+
+SetWetness_START
+<player> SetWetness();
+
+Summary
+ToDo
+
+Call on
+A Player
+
+Example
+player SetWetness();
+SetWetness_END
+
+setweaponslotammo_START
+<player> setweaponslotammo( <weapon slot>, <ammo count> );
+
+Summary
+Sets the ammunition for the weapon in the given weapon slot.
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<weapon slot>	String	N/A	Valid weaponslots are "primary" and "primaryb".
+<ammo count>	String	N/A	The amount of ammunition.
+
+Example
+level.player setWeaponSlotAmmo("primary", 125);
+setweaponslotammo_END
+
+setweaponslotclipammo_START
+<player> setweaponslotclipammo( <weapon slot>, <ammo count> );
+
+Summary
+Sets the clip ammunition for the weapon in the given weapon slot.
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<weapon slot>	String	N/A	Valid weaponslots are "primary" and "primaryb".
+<ammo count>	String	N/A	The amount of ammunition.
+
+Example
+level.player setWeaponSlotClipAmmo("primary", 125);
+setweaponslotclipammo_END
+
+setweaponslotweapon_START
+<player> setweaponslotweapon( <weapon slot>, <weapon name> );
+
+Summary
+Sets the the weapon in the given weapon slot.
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<weapon slot>	String	N/A	Valid weaponslots are "primary" and "primaryb".
+<weapon name>	String	N/A	The name of the weapon to use in this slot.
+
+Example
+level.player setWeaponSlotWeapon("primary", weapon);
+setweaponslotweapon_END
+
+shellshock_START
+<player> shellshock( <shellshockname>, <duration> );
+
+Summary
+Start a shell shock sequence for the player. The shell shock must be precached, otherwise calling this script will cause a script error.
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<shellshockname>	String	N/A	N/A
+<duration>	String	N/A	duration in seconds. The duration must be between 0 and 60 seconds.
+
+Example
+self shellshock("death", 5);
+shellshock_END
+
+SetBurn_START
+<player> SetBurn();
+
+Summary
+ToDo
+
+Call on
+A Player
+
+Example
+player SetBurn();
+SetBurn_END
+
+setwaterdrops_START
+<player> setwaterdrops();
+
+Summary
+ToDo
+
+Call on
+A Player
+
+Example
+player SetElectrified();
+
+<player> SetElectrified();
+
+Summary
+ToDo
+
+Call on
+A Player
+
+Example
+player SetWaterdrops();
+setwaterdrops_END
+
+stopShellshock_START
+<player> stopShellshock();
+
+Summary
+Stop a shell shock sequence for the player
+
+Call on
+A Player
+
+Example
+self stopShellshock();
+stopShellshock_END
+
+switchToOffHand_START
+<player> switchToOffHand( <weapon name> );
+
+Summary
+Switch the player's offhand weapon
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<weapon name>	String	N/A	The weapon name (a string)
+
+Example
+None
+switchToOffHand_END
+
+switchToWeapon_START
+<player> switchToWeapon( <weapon name> );
+
+Summary
+Switch to a different weapon
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<weapon name>	String	N/A	The weapon name (a string)
+
+Example
+level.player switchToWeapon("mosin_nagant");
+switchToWeapon_END
+
+takeAllWeapons_START
+<player> takeAllWeapons();
+
+Summary
+Remove all the weapons from the player.
+
+Call on
+A Player
+
+Example
+level.player takeAllWeapons();
+takeAllWeapons_END
+
+takeWeapon_START
+<player> takeWeapon( <weapon name> );
+
+Summary
+Take a weapon from the player.
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<weapon name>	String	N/A	The weapon name to take from the player
+
+Example
+level.player takeWeapon("m1garand");
+takeWeapon_END
+
+useButtonPressed_START
+<player> useButtonPressed();
+
+Summary
+Check if the player is pressing the 'use' button.
+
+Call on
+A Player
+
+Example
+while(self useButtonPressed())...;
+useButtonPressed_END
+
+viewKick_START
+<player> viewKick( <force>, <source> );
+
+Summary
+Damage the player, and throw the screen around
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<force>	String	N/A	The force of the kick, from 0 to 127
+<source>	String	N/A	the source of the kick
+
+Example
+level.player viewKick(127, level.player.origin);  ;
+viewKick_END
+
+precacheItem_START
+precacheItem( <item name> );
+
+Summary
+Precaches the given item. It must be called before any wait statements in the level script.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<item name>	String	N/A	The name of the item to precache.
+
+Example
+None
+precacheItem_END
+
+precacheMaterial_START
+precacheMaterial( <material name> );
+
+Summary
+Precaches the given material. It must be called before any wait statements in the level script.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<material name>	String	N/A	The name of the material to precache.
+
+Example
+None
+precacheMaterial_END
+
+precacheMenu_START
+precacheMenu( <menu> );
+
+Summary
+precache this menu
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<menu>	String	N/A	The menu to load
+
+Example
+precacheMenu(game["menu_serverinfo"]);
+precacheMenu_END
+
+precacheModel_START
+precacheModel( <model> );
+
+Summary
+Precaches the given model. It must be called before any wait statements in the level script.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<model>	String	N/A	The name of the model to precache.
+
+Example
+precacheModel("xmodel/prop_panzerfaust_lid");
+precacheModel_END
+
+precacheRumble_START
+precacheRumble( <rumble> );
+
+Summary
+Precaches the given rumble. It must be called before any wait statements in the level script.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<rumble>	String	N/A	The name of the rumble to precache.
+
+Example
+None
+precacheRumble_END
+
+precacheShellshock_START
+precacheShellshock( <shellshock effect name> );
+
+Summary
+Precaches the shellshock effect. It must be called before any wait statements in the level script.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<shellshock effect name>	String	N/A	The name of the shellshock effect to precache.
+
+Example
+None
+precacheShellshock_END
+
+precacheString_START
+precacheString( <string> );
+
+Summary
+Precaches the given string. It must be called before any wait statements in the level script.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<string>	String	N/A	The name of the string to precache.
+
+Example
+None
+precacheString_END
+
+commitSave_START
+commitSave(, <saveId> );
+
+Summary
+commits the current save in the save buffer.
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<saveId>	String	N/A	The id of the save to commit.
+
+Example
+commitSave(id);
+commitSave_EBD
+
+isSaveRecentlyLoaded_START
+isSaveRecentlyLoaded();
+
+Summary
+checks if the current savegame has recently been loaded.
+
+Example
+isSaveRecentlyLoaded();
+isSaveRecentlyLoaded_END
+
+isSaveSuccessful_START
+isSaveSuccessful();
+
+Summary
+checks if the last saved game was successfully saved.
+
+Example
+isSaveSuccessful();
+isSaveSuccessful_END
+
+savegame_START
+savegame(, <filename>, <description>, <screenshot> );
+
+Summary
+Save the current game.
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<filename>	String	N/A	The name of the file. If not used then the file will be automatically named. Will throw a script error if multiple saves are attempted in the same frame.
+<description>	String	N/A	A description of the savegame.
+<screenshot>	String	N/A	The name of the screenshot file. If not used then the file will be automatically named.
+
+Example
+savegame(("Chateau" + nodenum), "Documents Obtained");
+savegame_END
+
+savegameNoCommit_START
+savegameNoCommit(, <filename>, <description>, <screenshot> );
+
+Summary
+Save the current game to a memory buffer. Returns an ID for the save. Will throw a script error if multiple saves are attempted in the same frame.
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<filename>	String	N/A	The name of the file. If not used then the file will be automatically named.
+<description>	String	N/A	A description of the savegame.
+<screenshot>	String	N/A	The name of the screenshot file. If not used then the file will be automatically named.
+
+Example
+id = savegameNoCommit(("Chateau" + nodenum), "Documents Obtained");
+savegameNoCommit_END
+
+getAIArray_START
+getAIArray( <team>, <team> );
+
+Summary
+Returns an array of the AI
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<team>	String	N/A	a team name, either 'axis', 'allies', or 'neutral'
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<team>	String	N/A	any number of additional team names may be added, either 'axis', 'allies', or 'neutral'
+
+Example
+aiarray = getAIArray("axis","neutral");
+getAIArray_END
+
+getClosestEnemySqDist_START
+<actor> getClosestEnemySqDist();
+
+Summary
+Get the distance to the nearest enemy
+
+Call on
+An Actor
+
+Example
+dist = self getClosestEnemySqDist();
+getClosestEnemySqDist_START
+
+getEnemySqDist_START
+<actor> getEnemySqDist();
+
+Summary
+This function is deprecated. use GetClosestEnemySqDist
+
+Call on
+An Actor
+
+Example
+None
+getEnemySqDist_END
+
+getEye_START
+<sentient> getEye();
+
+Summary
+Gets the position of the eye for an AI or Player
+
+Call on
+sentient
+
+Example
+eyePos = level.player getEye();
+getEye_END
+
+isAI_START
+isAI( <entity> );
+
+Summary
+Checks whether this entity is an ai character
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<entity>	String	N/A	An entity object that may be an ai character
+
+Example
+if ( isAI ( gun_owner )) ... ;
+isAI_END
+
+isAlive_START
+isAlive( <entity> );
+
+Summary
+Checks whether this entity is alive
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<entity>	String	N/A	An entity object that might be alive or dead
+
+Example
+if ( isAlive ( gun_owner )) ... ;
+isAlive_END
+
+isPlayer_START
+isPlayer( <entity> );
+
+Summary
+Checks whether this entity is the player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<entity>	String	N/A	An entity object that may be the player
+
+Example
+if ( isPlayer ( gun_owner )) ... ;
+isPlayer_END
+
+isSentient_START
+isSentient( <entity> );
+
+Summary
+Checks whether this entity is a sentient, that is either an ai character or the player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<entity>	String	N/A	An entity object that may be a sentient character
+
+Example
+if ( isSentient ( vehicle.riders[j] )) ... ;
+isSentient_END
+
+ambientPlay_START
+ambientPlay( <ambient>, <fadetime> );
+
+Summary
+Play the given piece of ambient sound.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<ambient>	String	N/A	Sound alias name. Must be a valid sound alias
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<fadetime>	String	N/A	Fade in time in seconds. If not used then the track will start immediately
+
+Example
+ambientPlay("redsquare_dark");
+ambientPlay_END
+
+ambientStop_START
+ambientStop(, <fadetime> );
+
+Summary
+Play the given piece of ambient sound.
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<fadetime>	String	N/A	Fade out time in seconds. If not used then the track will stop immediately
+
+Example
+ambientStop("redsquare_dark");
+ambientStop_END
+
+isWaitingOnSound_START
+<entity> isWaitingOnSound();
+
+Summary
+Checks if this entity is waiting on a sound notify
+
+Call on
+An Entity
+
+Example
+if (car isWaitingOnSound())...
+isWaitingOnSound_END
+
+musicPlay_START
+musicPlay( <music> );
+
+Summary
+Play the given piece of music.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<music>	String	N/A	The piece to play. Must be a valid sound alias
+
+Example
+musicPlay("redsquare_dark");
+musicPlay_END
+
+musicStop_START
+musicStop(, <time> );
+
+Summary
+Stop playing music.
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<time>	String	N/A	The time over which the music will fade in seconds. If this option is not present then the music will stop immediately.
+
+Example
+musicStop(3);
+musicStop_END
+
+playLoopSound_START
+<entity> playLoopSound( <aliasname> );
+
+Summary
+Play a sound as a loop
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<aliasname>	String	N/A	The sound alias to play
+
+Example
+car playLoopSound ("peugeot_idle_low");
+playLoopSound_END
+
+playSound_START
+<entity> playSound( <aliasname>, <notification string>, <stoppable flag> );
+
+Summary
+Play the sound alias as if coming from the entity
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<aliasname>	String	N/A	The sound alias to play
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<notification string>	String	N/A	If present, the sound will notify this string on this entity when done.
+<stoppable flag>	String	N/A	If present and true, then this sound can be interrupted by another playsound command with notification string. It is a script error for a playsound that does not have this flag set to get interrupted by another playsound with notify, or for a playsound with notify that does not have this flag set to interrupt another playsound with notify.
+
+Example
+self playSound("Dirt_skid","skidsound",true);
+playSound_END
+
+playSoundAsMaster_START
+<entity> playSoundAsMaster( <aliasname>, <notification string>, <stoppable flag> );
+
+Summary
+Play the sound alias as if coming from the entity, as a master sound
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<aliasname>	String	N/A	The sound alias to play
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<notification string>	String	N/A	If present, the sound will notify this string on this entity when done.
+<stoppable flag>	String	N/A	If present and true, then this sound can be interrupted by another playsound command with notification string. It is a script error for a playsound that does not have this flag set to get interrupted by another playsound with notify, or for a playsound with notify that does not have this flag set to interrupt another playsound with notify.
+
+Example
+self playSoundAsMaster("Dirt_skid","skidsound",true);
+playSoundAsMaster_END
+
+playYellSound_START
+<entity> playYellSound( <aliasname>, <notification string>, <stoppable flag> );
+
+Summary
+Play the sound alias as if yelled by the entity
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<aliasname>	String	N/A	The sound alias to play
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<notification string>	String	N/A	If present, the sound will notify this string on this entity when done.
+<stoppable flag>	String	N/A	If present and true, then this sound can be interrupted by another playsound command with notification string. It is a script error for a playsound that does not have this flag set to get interrupted by another playsound with notify, or for a playsound with notify that does not have this flag set to interrupt another playsound with notify.
+
+Example
+self playYellSound(soundAlias, "animscript facesound", true);
+playYellSound_END
+
+playYellSoundAsMaster_START
+<entity> playYellSoundAsMaster( <aliasname>, <notification string>, <stoppable flag> );
+
+Summary
+Play the sound alias as if yelled by the entity as a master sound"
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<aliasname>	String	N/A	The sound alias to play
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<notification string>	String	N/A	If present, the sound will notify this string on this entity when done.
+<stoppable flag>	String	N/A	If present and true, then this sound can be interrupted by another playsound command with notification string. It is a script error for a playsound that does not have this flag set to get interrupted by another playsound with notify, or for a playsound with notify that does not have this flag set to interrupt another playsound with notify.
+
+Example
+self playYellSoundAsMaster(soundAlias, "animscript facesound", true);
+playYellSoundAsMaster_END
+
+setSoundBlend_START
+<sound blend entity> setSoundBlend( <sound 1>, <sound 2>, <mix> );
+
+Summary
+Set the sound blend on a blend entity
+
+Call on
+sound blend entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<sound 1>	String	N/A	The first sound
+<sound 2>	String	N/A	The second sound
+<mix>	String	N/A	The mix between the two sounds, a floating point number between 0 and 1
+
+Example
+blend setSoundBlend( "Stalingrad_artillery_rumble_null", "Stalingrad_artillery_rumble", 0.4 );
+setSoundBlend_END
+
+soundExists_START
+soundExists( <aliasname> );
+
+Summary
+Returns true if the sound alias exists
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<aliasname>	String	N/A	The sound alias to play
+
+Example
+if (soundExists("Dirt_skid","skidsound",true)) { ... }
+soundExists_END
+
+soundFade_START
+soundFade(, <time> );
+
+Summary
+Fades the sound out.
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<time>	String	N/A	The time over which the sound will fade in seconds. If this option is not present then the music will stop immediately.
+
+Example
+soundFade(3);
+soundFade_END
+
+stopLoopSound_START
+<entity> stopLoopSound();
+
+Summary
+Stop a looping sound
+
+Call on
+An Entity
+
+Example
+car stopLoopSound();
+stopLoopSound_END
+
+doSpawn_START
+<actor> doSpawn(, <targetname> );
+
+Summary
+Spawns an actor from an actor spawner, if possible (the spawner won't spawn if the player is looking at the spawn point, or if spawning would cause a telefrag)
+
+Call on
+An Actor
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<targetname>	String	N/A	sets the targetname of the spawned entity
+
+Example
+spawned = driver doSpawn(name);
+doSpawn_END
+
+forceSpawn_START
+<actor> forceSpawn(, <targetname> );
+
+Summary
+Force spawns an actor from an actor spawner, reguardless of whether the spawn point is in sight or if the spawn will cause a telefrag
+
+Call on
+An Actor
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<targetname>	String	N/A	sets the targetname of the spawned entity
+
+Example
+spawned = driver forceSpawn(name);
+forceSpawn_END
+
+getEnt_START
+getEnt( <name>, <key> );
+
+Summary
+Looks up entities by key and name
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<name>	String	N/A	name to search for
+<key>	String	N/A	key that name goes with
+
+Example
+spawner = getEnt("doorguy1","targetname");
+getEnt_END
+
+getSpawnerArray_START
+getSpawnerArray();
+
+Summary
+Returns an array of all of the spawners in a level
+
+Example
+spawners = getSpawnerArray();
+getSpawnerArray_END
+
+getSpawnerTeamArray_START
+getSpawnerTeamArray( <team>, <team> );
+
+Summary
+Returns an array of all of the spawners in a level
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<team>	String	N/A	a team name, either 'axis', 'allies', or 'neutral'
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<team>	String	N/A	any number of additional team names may be added, either 'axis', 'allies', or 'neutral'
+
+Example
+enemies = getSpawnerTeamArray  ("axis", "neutral");
+getSpawnerTeamArray_END
+
+precacheTurret_START
+precacheTurret( <turretInfo> );
+
+Summary
+Precaches the weapon info structure for the turret. Must be called before any wait statements in the level script
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<turretInfo>	String	N/A	The turret info name (string)
+
+Example
+precacheTurret("mg42_tank_tiger");
+precacheTurret_END
+
+setSpawnerTeam_START
+<entity> setSpawnerTeam( <team> );
+
+Summary
+Set the team for this spawner
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<team>	String	N/A	The team for this spawner. Either axis, allies or neutral
+
+Example
+self setSpawnerTeam("axis");
+setSpawnerTeam_END
+
+spawn_START
+spawn( <classname>, <origin>, <flags>, <radius>, <height> );
+
+Summary
+Spawns a new entity and returns a reference to the entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<classname>	String	N/A	The name of the class to spawn (constant string)
+<origin>	String	N/A	The position where the entity is to be spawned (vector)
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<flags>	String	N/A	spawn flags (integer)
+<radius>	String	N/A	If the entity is a 'trigger_radius' entity then this is the radius of the trigger. Otherwise this parameter is invalid.
+<height>	String	N/A	If the entity is a 'trigger_radius' entity then this is the height of the trigger. Otherwise this parameter is invalid.
+
+Example
+org = spawn("script_origin",self getorigin());
+spawn_END
+
+spawnTurret_START
+spawnTurret( <classname>, <origin>, <weaponinfoname> );
+
+Summary
+Spawns a new turret, eg MG42 or flak gun and returns a reference to it
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<classname>	String	N/A	The classname of the entity (constant string)
+<origin>	String	N/A	The position of the vehicle (vector)
+<weaponinfoname>	String	N/A	The name of the weapon info to use for this turret (string)
+
+Example
+None
+spawnTurret_END
+
+spawnVehicle_START
+spawnVehicle( <modelname>, <targetname>, <vehicletype>, <origin>, <angles> );
+
+Summary
+Spawns a new vehicle and returns a reference to it
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<modelname>	String	N/A	The name of the model to spawn (constant string)
+<targetname>	String	N/A	vehicle target name (constant string)
+<vehicletype>	String	N/A	vehicle type (constant string)
+<origin>	String	N/A	The position of the vehicle (vector)
+<angles>	String	N/A	The angle to spawn the vehicle at (vector)
+
+Example
+None
+spawnVehicle_END
+
+stalingradSpawn_START
+<actor> stalingradSpawn(, <targetname> );
+
+Summary
+Force spawns an actor from an actor spawner, reguardless of whether the spawn point is in sight or if the spawn will cause a telefrag
+
+Call on
+An Actor
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<targetname>	String	N/A	sets the targetname of the spawned entity
+
+Example
+spawned = driver stalingradSpawn(name);
+stalingradSpawn_END
+
+getSubStr_START
+getSubStr();
+
+Summary
+Returns the substring of characters >=
+
+Example
+None
+getSubStr_END
+
+isSubStr_START
+isSubStr();
+
+Summary
+Returns true/false if is a substring of <string>. Case sensitive.
+
+Example
+None
+isSubStr_END
+
+strTok_START
+strTok();
+
+Summary
+Tokenizes by the delimiters <delim>. Returns the array of string tokens.
+
+Example
+None
+strTok_END
+
+toLower_START
+toLower();
+
+Summary
+Converts to a lower case string which is returned.
+
+Example
+None
+toLower_END
+
+bulletTrace_START
+bulletTrace( <start>, <end>, <hit characters>, <ignore entity> );
+
+Summary
+Allows script to do a point trace with MASK_SHOT. Returns hit position, hit entity, hit surface normal.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<start>	String	N/A	The bullet start point
+<end>	String	N/A	The bullet end point
+<hit characters>	String	N/A	When set to true, this will trace for character hits
+<ignore entity>	String	N/A	An entity to ignore
+
+Example
+trace = bulletTrace(magicBulletOrigin.origin, eyePos, true, undefined);
+bulletTrace_END
+
+bulletTracePassed_START
+bulletTracePassed( <start>, <end>, <hit characters>, <ignore entity> );
+
+Summary
+Allows script to do a point trace with MASK_SHOT. Returns true if trace complete, else returns false.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<start>	String	N/A	The bullet start point
+<end>	String	N/A	The bullet end point
+<hit characters>	String	N/A	When set to true, this will trace for character hits
+<ignore entity>	String	N/A	An entity to ignore
+
+Example
+success = bulletTracePassed(magicBulletOrigin.origin, eyePos, true, undefined);
+bulletTracePassed_END
+
+physicsTrace_START
+physicsTrace( <start>, <end> );
+
+Summary
+Physics trace, ignoring characters. Returns the endpos vector.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<start>	String	N/A	The start point
+<end>	String	N/A	The end point
+
+Example
+endpos = physicsTrace(start, end);
+physicsTrace_END
+
+sightTracePassed_START
+sightTracePassed( <start>, <end>, <hit characters>, <ignore entity> );
+
+Summary
+Allows script to do a point trace with MASK_OPAQUE_AI. Returns true if trace complete, else returns false.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<start>	String	N/A	The bullet start point
+<end>	String	N/A	The bullet end point
+<hit characters>	String	N/A	When set to true, this will trace for character hits
+<ignore entity>	String	N/A	An entity to ignore
+
+Example
+success = sightTracePassed(magicBulletOrigin.origin, eyePos, true, undefined);
+sightTracePassed_END
+
+clearTargetEntity_START
+<turret> clearTargetEntity();
+
+Summary
+Clears the current target for this turret.
+
+Call on
+turret
+
+Example
+roof_mg42 clearTargetEntity();
+clearTargetEntity_END
+
+getTurretOwner_START
+<turret> getTurretOwner();
+
+Summary
+Gets the "owner" of this turret
+
+Call on
+turret
+
+Example
+mg42user = roof_mg42 getTurretOwner();
+getTurretOwner_END
+
+getTurretTarget_START
+<turret> getTurretTarget();
+
+Summary
+Gets the current target of this turret
+
+Call on
+turret
+
+Example
+target = roof_mg42 getTurretTarget();
+getTurretTarget_END
+
+isFiringTurret_START
+<entity> isFiringTurret();
+
+Summary
+Checks whether this turret is firing. The entity must be a turret
+
+Call on
+An Entity
+
+Example
+mg42 isFiringTurret();
+isFiringTurret_END
+
+makeTurretUnusable_START
+<turret> makeTurretUnusable();
+
+Summary
+Sets a turret to be unable to be used
+
+Call on
+turret
+
+Example
+roof_mg42 maketurretusable(); //<-- Not correct i know. But this is from the script ref site.
+makeTurretUnusable_END
+
+makeTurretUsable_START
+<turret> makeTurretUsable();
+
+Summary
+Sets a turret able to be used
+
+Call on
+turret
+
+Example
+roof_mg42 makeTurretUsable();
+makeTurretUsable_END
+
+restoreDefaultDropPitch_START
+<turret> restoreDefaultDropPitch();
+
+Summary
+Restores the pitch of the turret when it drops to the ground.Recalculates based on current collision environment.Use this if you move a turret and need to reconfigure.
+
+Call on
+turret
+
+Example
+turret restoreDefaultDropPitch();
+restoreDefaultDropPitch_END
+
+setAISpread_START
+<turret> setAISpread( <spread> );
+
+Summary
+Sets the spread of this turret when used by an AI
+
+Call on
+turret
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<spread>	String	N/A	The spread of the turret in degrees
+
+Example
+roof_mg42 setAISpread(0.2);
+setAISpread_END
+
+setBottomArc_START
+<entity> setBottomArc( <angle> );
+
+Summary
+Set the amount that the turret can pivot down
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<angle>	String	N/A	The bottom arc in degrees
+
+Example
+mg42 setBottomArc(45);
+setBottomArc_END
+
+setConvergenceTime_START
+<turret> setConvergenceTime( <convergence time>, <type> );
+
+Summary
+Sets the time that a turret takes to converge to its target, on either the pitch or yay planes.
+
+Call on
+turret
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<convergence time>	String	N/A	The time that the turret takes to converge in seconds
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<type>	String	N/A	the type of convergence. Can be either 'pitch' or 'yaw'. If not set then the default is 'yaw'
+
+Example
+roof_mg42 setConvergenceTime(2.0, "yaw");
+setConvergenceTime_END
+
+setDefaultDropPitch_START
+<turret> setDefaultDropPitch( <pitch> );
+
+Summary
+Set the default drop pitch that the turret attempts to return to when it is not in use.
+
+Call on
+turret
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<pitch>	String	N/A	yaw of the turret (side to side) in degrees.
+
+Example
+turret setDefaultDropPitch(-90);
+setDefaultDropPitch_END
+
+setLeftArc_START
+<entity> setLeftArc( <angle> );
+
+Summary
+Set the amount that the turret can move to the left
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<angle>	String	N/A	The left arc in degrees
+
+Example
+mg42 setLeftArc(45);
+setLeftArc_END
+
+setMode_START
+<turret> setMode( <mode> );
+
+Summary
+Set the mode of a turret.
+
+Call on
+turret
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<mode>	String	N/A	The turret mode. Possible modes are "auto_ai", "manual", "manual_ai" and "auto_nonai
+
+Example
+mg42 setMode("auto_ai");
+setMode_END
+
+setPlayerSpread_START
+<turret> setPlayerSpread( <spread> );
+
+Summary
+Sets the spread of this turret when used by the player
+
+Call on
+turret
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<spread>	String	N/A	The spread of the turret in degrees
+
+Example
+roof_mg42 setPlayerSpread(0.2);
+setPlayerSpread_END
+
+setRightArc_START
+<entity> setRightArc( <angle> );
+
+Summary
+Set the amount that the turret can move to the right
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<angle>	String	N/A	The right arc in degrees
+
+Example
+mg42 setRightArc(45);
+setRightArc_END
+
+setSuppressionTime_START
+<turret> setSuppressionTime( <supression time> );
+
+Summary
+Sets the time that a turret uses supressing fire after losing sight of an enemy
+
+Call on
+turret
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<supression time>	String	N/A	The time that the turret will supress an unseen enemy in seconds
+
+Example
+roof_mg42 setSuppressionTime(1.0);
+setSuppressionTime_END
+
+setTargetEntity_START
+<turret> setTargetEntity( <target> );
+
+Summary
+Sets the target of this turret
+
+Call on
+turret
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<target>	String	N/A	the turret target
+
+Example
+roof_mg42 setTargetEntity(target);
+setTargetEntity_END
+
+setTopArc_START
+<entity> setTopArc( <angle> );
+
+Summary
+Set the amount that the turret can pivot up
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<angle>	String	N/A	The top arc in degrees
+
+Example
+mg42 setTopArc(45);
+setTopArc_END
+
+setTurretIgnoreGoals_START
+<turret> setTurretIgnoreGoals( <ignoreGoals> );
+
+Summary
+Sets the ignoreGoals flag for the turret.
+
+Call on
+turret
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<ignoreGoals>	String	N/A	If this is true then any actor on this turret will ignore his goals, and continue to use the turret. This is useful for vehicle based turrets.
+
+Example
+roof_mg42 setTurretIgnoreGoals(true);
+setTurretIgnoreGoals_END
+
+setTurretTeam_START
+<turret> setTurretTeam( <team> );
+
+Summary
+Sets the team of a turret
+
+Call on
+turret
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<team>	String	N/A	The turret's "team" (string) either "axis" or "allies"
+
+Example
+roof_mg42 setTurretTeam("axis");
+setTurretTeam_END
+
+shootTurret_START
+<turret> shootTurret();
+
+Summary
+Shoots a turret
+
+Call on
+turret
+
+Example
+roof_mg42 shootTurret();
+shootTurret_END
+
+startFiring_START
+<turret> startFiring();
+
+Summary
+Starts a turret firing
+
+Call on
+turret
+
+Example
+mg42 startFiring();
+startFiring_END
+
+stopFiring_START
+<turret> stopFiring();
+
+Summary
+Stops a turret firing
+
+Call on
+turret
+
+Example
+mg42 stopFiring();
+stopFiring_END
+
+isDefined_START
+isDefined( <object> );
+
+Summary
+Checks whether this entity/variable is defined
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<object>	String	N/A	object that may or may not be defined
+
+Example
+if ( isDefined ( gun_owner )) ... ;
+isDefined_END
+
+isString_START
+isString( <variable> );
+
+Summary
+Checks whether this entity/variable is a string
+This function was approved!
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<variable>	String	N/A	variable that may or may not be a string
+
+Example
+if ( isString ( gun_owner ))
+isString_END
+
+anglesToForward_START
+anglesToForward( <angles> );
+
+Summary
+Returns the forward vector corresponding to a set of angles.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<angles>	String	N/A	A set of angles
+
+Example
+forward = anglesToForward(forward);
+anglesToForward_END
+
+anglesToRight_START
+anglesToRight( <angles> );
+
+Summary
+Returns the right vector corresponding to a set of angles.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<angles>	String	N/A	A set of angles
+
+Example
+right = anglesToRight(angles);
+anglesToRight_END
+
+anglesToUp_START
+anglesToUp( <angles> );
+
+Summary
+Returns the up vector corresponding to a set of angles.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<angles>	String	N/A	A set of angles
+
+Example
+up = anglesToUp(angles);
+anglesToUp_END
+
+closer_START
+closer( <reference>, <point a>, <point b> );
+
+Summary
+Tests which of two points is the closest. Returns true if point a is closer to the reference than point b
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<reference>	String	N/A	The base position
+<point a>	String	N/A	The first point
+<point b>	String	N/A	The second point
+
+Example
+if( closer( center, models[j].origin , models[i].origin ))...
+closer_END
+
+distance_START
+distance( <point1>, <point2> );
+
+Summary
+Returns the distance between two points
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<point1>	String	N/A	The first point
+<point2>	String	N/A	The second point
+
+Example
+dist = distance (org, ai[i].origin);
+distance_END
+
+distancesquared_START
+distanceSquared( <point1>, <point2> );
+
+Summary
+Returns the squared distance between two points - this is cheaper than the actual distance as it doesn't involve a square root
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<point1>	String	N/A	The first point
+<point2>	String	N/A	The second point
+
+Example
+dist2 = distanceSquared(models[j].origin, center);
+distancesquared_END
+
+length_START
+length( <vector> );
+
+Summary
+Returns the length of the given vector
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<vector>	String	N/A	A vector
+
+Example
+dist = length(models[j].origin - center);
+length_END
+
+lengthSquared_START
+lengthSquared( <vector> );
+
+Summary
+Returns the squared vector length for the given vector - this is cheaper than the actual vector length as it doesn't involve a square root
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<vector>	String	N/A	A vector
+
+Example
+dist2 = lengthSquared(models[j].origin - center);
+lengthSquared_END
+
+vectorDot_START
+vectorDot( <vector a>, <vector b> );
+
+Summary
+Returns the dot product of two vectors
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<vector a>	String	N/A	The first vector
+<vector b>	String	N/A	The second vector
+
+Example
+None
+vectorDot_END
+
+vectorNormalize_START
+vectorNormalize( <vector> );
+
+Summary
+Returns a normalized copy of this vector
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<vector>	String	N/A	The vector to normalize
+
+Example
+difference = vectorNormalize(end - start);
+vectorNormalize_END
+
+vectortoAngles_START
+vectortoAngles( <vector> );
+
+Summary
+Returns a set of angles corresponding to the given vector.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<vector>	String	N/A	The vector to convert to angles
+
+Example
+angles = vectortoAngles(end - start);
+vectortoAngles_END
+
+addVehicleToCompass_START
+<entity> addVehicleToCompass();
+
+Summary
+Add this vehicle to the compass
+
+Call on
+An Entity
+
+Example
+self addVehicleToCompass();
+addVehicleToCompass_END
+
+attachPath_START
+<entity> attachPath( <node index> );
+
+Summary
+Attaches this vehicle to the given path.
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<node index>	String	N/A	A node on the path to attach.
+
+Example
+bomber attachPath (aBomberPaths[i]);
+attachPath_END
+
+clearTurretTarget_START
+<entity> clearTurretTarget();
+
+Summary
+Clear the target for the vehicles's turret.
+
+Call on
+An Entity
+
+Example
+eTank clearTurretTarget();
+clearTurretTarget_END
+
+fireTurret_START
+<entity> fireTurret();
+
+Summary
+Fire the vehicle's turret
+
+Call on
+An Entity
+
+Example
+nFlak fireTurret();
+fireTurret_END
+
+freeVehicle_START
+<entity> freeVehicle();
+
+Summary
+Frees this vehicle instance.
+
+Call on
+An Entity
+
+Example
+self freeVehicle();
+freeVehicle_END
+
+getSpeed_START
+<entity> getSpeed();
+
+Summary
+Gets the speed in inches per second.
+
+Call on
+An Entity
+
+Example
+self getSpeed();
+getSpeed_END
+
+getSpeedMPH_START
+<entity> getSpeedMPH();
+
+Summary
+Gets the speed in miles per hour.
+
+Call on
+An Entity
+
+Example
+self getSpeedMPH();
+getSpeedMPH_END
+
+getVehicleOwner_START
+<entity> getVehicleOwner();
+
+Summary
+Returns the owner of this particular vehicle.
+
+Call on
+An Entity
+
+Example
+eFlak88user = eFlak88 getVehicleOwner();
+getVehicleOwner_END
+
+getWheelSurface_START
+<entity> getWheelSurface( <wheel> );
+
+Summary
+Returns the surface type of the given wheel as a string.
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<wheel>	String	N/A	The wheel position, can be 'front_left', 'front_right', 'back_left', 'back_right', 'middle_left', 'middle_right'
+
+Example
+surface = self getWheelSurface(side);
+getWheelSurface_END
+
+isTurretReady_END
+<entity> isTurretReady();
+
+Summary
+Query whether this vehicle's turret is ready for firing
+
+Call on
+An Entity
+
+Example
+while (level.playertank isTurretReady() != true)...
+isturretready_END
+
+joltbody_START
+<entity> joltBody( <jolt position>, <intensity>, <speedFrac>, <deceleration> );
+
+Summary
+Jolts the vehicle.
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<jolt position>	String	N/A	The position of the jolt
+<intensity>	String	N/A	The intensity of the jolt
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<speedFrac>	String	N/A	A speed fraction to apply to the jolt. Most be betweeon 0 and 1.
+<deceleration>	String	N/A	The deceleration to apply to this vehicle in miles per hour per second.
+
+Example
+self joltBody((self.origin + (0,0,64)),.5);
+joltBody_END
+
+makeVehicleUnusable_START
+<entity> makeVehicleUnusable();
+
+Summary
+Sets this vehicle to be not usable by the player
+
+Call on
+An Entity
+
+Example
+car makeVehicleUnusable();
+makeVehicleUnusable_END
+
+makeVehicleUsable_START
+<entity> makeVehicleUsable();
+
+Summary
+Sets this vehicle to be usable by the player
+
+Call on
+An Entity
+
+Example
+nFlak makeVehicleUsable();
+makeVehicleUsable_END
+
+removeVehicleFromCompass_START
+<entity> removeVehicleFromCompass();
+
+Summary
+Add this vehicle to the compass
+
+Call on
+An Entity
+
+Example
+self removeVehicleFromCompass();
+removeVehicleFromCompass_END
+
+resumeSpeed_START
+<entity> resumeSpeed( <acceleration> );
+
+Summary
+Sets the vehicle to resume its path speed.
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<acceleration>	String	N/A	The acceleration to apply to this vehicle in miles per hour per second.
+
+Example
+level.tank resumeSpeed(3);
+resumeSpeed_END
+
+setSpeed_START
+<entity> setSpeed( <speed>, <acceleration> );
+
+Summary
+Sets the speed for this vehicle.
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<speed>	String	N/A	The speed of the vehicle in miles per hour
+<acceleration>	String	N/A	The acceleration of the vehicle in miles per hour per second
+
+Example
+self setSpeed(8,25);
+setSpeed_END
+
+setSwitchNode_START
+<entity> setSwitchNode( <source node>, <dest node> );
+
+Summary
+Sets a switch node for this vehicle.
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<source node>	String	N/A	The switch source node
+<dest node>	String	N/A	The switch destination node.
+
+Example
+tank2 setSwitchNode(tank2snode1,tank2snode2);
+setSwitchNode_END
+
+setTurretTargetEnt_START
+<entity> setTurretTargetEnt( <target entity>, <target offset> );
+
+Summary
+Set the target entity for this vehicle's turret.
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<target entity>	String	N/A	The turret target.
+<target offset>	String	N/A	The turret target offset.
+
+Example
+eFlak88 setTurretTargetEnt( eFlaktarget, eFlaktarget.origin );
+setTurretTargetEnt_END
+
+setTurretTargetVec_START
+<entity> setTurretTargetVec( <target position> );
+
+Summary
+Set the target position for this vehicle's turret.
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<target position>	String	N/A	The position of the turret's target
+
+Example
+level.flak1 setTurretTargetVec(vec1);
+setTurretTargetVec_END
+
+setVehicleLookAtText_START
+<entity> setVehicleLookAtText( <lookat text line 1>, <lookat text line 2> );
+
+Summary
+Set look at text for vehicle.
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<lookat text line 1>	String	N/A	The unlocalized look at text for this vehicle. Line is green and usually a name
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<lookat text line 2>	String	N/A	The localized look at text for this vehicle. Line is white and usually a type
+
+Example
+None
+setVehicleLookAtText_END
+
+setVehicleTeam_START
+<entity> setVehicleTeam( <team> );
+
+Summary
+Set which team a vehicle is on.
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<team>	String	N/A	The team name. Must be either "allies", "axis", or "none".
+
+Example
+None
+setVehicleTeam_END
+
+setWaitNode_START
+<entity> setWaitNode( <wait node> );
+
+Summary
+Sets a wait node for this vehicle.
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<wait node>	String	N/A	The node for the vehicle to wait at
+
+Example
+self setWaitNode(pathspot);
+setWaitNode_END
+
+setWaitSpeed_START
+<entity> setWaitSpeed( <wait speed> );
+
+Summary
+Sets a the wait speed for for this vehicle in miles per hour.
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<wait speed>	String	N/A	The wait speed for the vehicle.
+
+Example
+self setWaitSpeed(5);
+setWaitSpeed_END
+
+startEngineSound_START
+<entity> startEngineSound();
+
+Summary
+Start the engine sound for this vehicle.
+
+Call on
+An Entity
+
+Example
+None
+startEngineSound_END
+
+startPath_START
+<entity> startPath( <node index> );
+
+Summary
+Starts the vehicle following this path.
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<node index>	String	N/A	A node on the path to attach.
+
+Example
+bomber attachPath (aBomberPaths[i]); //<-- Not correct i know. But this is from the script ref site.
+startPath_END
+
+stopEngineSound_START
+<entity> stopEngineSound();
+
+Summary
+Start the engine sound for this vehicle.
+
+Call on
+An Entity
+
+Example
+truck stopEngineSound();
+stopEngineSound_END
+
+stopEngineSound_START
+<entity> stopEngineSound();
+
+Summary
+Start the engine sound for this vehicle.
+
+Call on
+An Entity
+
+Example
+truck stopEngineSound();
+stopEngineSound_END
+
+stopEngineSound_START
+<entity> stopEngineSound();
+
+Summary
+Start the engine sound for this vehicle.
+
+Call on
+An Entity
+
+Example
+truck stopEngineSound();
+stopEngineSound_END
+
+bulletSpread_START
+bulletSpread ( <start>, <end>, <spread> );
+
+Summary
+uses spread to return a new end position
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<start>	String	N/A	The bullet starting point
+<end>	String	N/A	The bullet ending point
+<spread>	String	N/A	Amount of spread
+
+Example
+endpos = bulletspread(self.origin, target.origin, 1.0)
+bulletSpread_END
+
+bulletTracer_START
+bulletTracer ( <start> String, <end> String );
+
+Summary
+creates a bullet tracer from the start to end point
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<start>	String	N/A	The starting point bullet tracer
+<end>	String	N/A	The end point bullet tracer
+
+Example
+bullettracer(self.origin, target.origin)
+bulletTracer_END
+
+disableGrenadeBounce_START
+<entity> disableGrenadeBounce();
+
+Summary
+Disallow grenades bouncing off of this entity
+
+Call on
+An Entity
+
+Example
+self disableGrenadeBounce();
+disableGrenadeBounce_END
+
+disableGrenadeTouchDamage_START
+<entity> disableGrenadeTouchDamage();
+
+Summary
+Disable grenade damage for damage triggers
+
+Call on
+An Entity
+
+Example
+self disableGrenadeTouchDamage();
+disableGrenadeTouchDamage_END
+
+enableGrenadeBounce_START
+<entity> enableGrenadeBounce();
+
+Summary
+Allow grenades to bounce off of this entity
+
+Call on
+An Entity
+
+Example
+self enableGrenadeBounce();
+enableGrenadeBounce_END
+
+enableGrenadeTouchDamage_START
+<entity> enableGrenadeTouchDamage();
+
+Summary
+enable grenade damage for damage triggers
+
+Call on
+An Entity
+
+Example
+self enableGrenadeTouchDamage();
+enableGrenadeTouchDamage_END
+
+getAmmoCount_START
+<player> getAmmoCount( <weapon name> );
+
+Summary
+Get the remaining ammo
+
+Call on
+A Player
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<weapon name>	String	N/A	The weapon name.
+
+Example
+getAmmoCount("mosin_nagant_sniper");
+getAmmoCount_END
+
+getWeaponClassname_START
+getWeaponClassname( <weapon name> );
+
+Summary
+Returns the classname for the given weapon
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<weapon name>	String	N/A	The name of the weapon
+
+Example
+weapon_type = getWeaponClassname("mosin_nagant_sniper");
+getWeaponClassname_END
+
+getWeaponModel_START
+getWeaponModel( <weapon name> );
+
+Summary
+Returns the name of the weapon model used for the given weapon
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<weapon name>	String	N/A	The name of the weapon
+
+Example
+sniper_model = getWeaponModel("mosin_nagant_sniper");
+getWeaponModel_END
+
+magicBullet_START
+magicBullet( <weaponName>, <start>, <end> );
+
+Summary
+Fire a 'magic bullet', from the source location towards the destination point.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<weaponName>	String	N/A	The name of the weapon
+<start>	String	N/A	The bullet tracer starting point
+<end>	String	N/A	The end point
+
+Example
+magicbullet("mosin_nagant_sniper", self.origin, target.origin)
+magicBullet_END
+
+magicGrenade_START
+<actor> magicGrenade( <origin>, <target position>, <time to blow> );
+
+Summary
+Creates a "Magic" grenade from an actor
+
+Call on
+An Actor
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<origin>	String	N/A	The starting point of the grenade toss
+<target position>	String	N/A	The target point of the grenade toss
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<time to blow>	String	N/A	The grenade fuse time in seconds
+
+Example
+self magicGrenade (self.origin, target.origin, 2.0)
+magicGrenade_END
+
+magicGrenadeManual_START
+<actor> magicGrenadeManual ( <origin> String, <velocity>String, <time to blow>String );
+
+Summary
+creates a "Magic" grenade from an actor
+
+Call on
+An Actor
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<origin>	String	N/A	The starting point of the grenade toss
+<velocity>	String	N/A	The initial velocity vector for the grenade movement
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<time to blow>	String	N/A	The grenade fuse time in seconds
+
+Example
+self magicgrenade (self.origin, target.origin, 2.0) //<-- Not correct i know. But this is from the script ref site.
+magicGrenadeManual_END
+
+weaponClipSize_START
+weaponClipSize( <weapon name> );
+
+Summary
+Get the weapon clip size for the given weapon
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<weapon name>	String	N/A	The weapon name.
+
+Example
+weaponClipSize("mosin_nagant_sniper");
+weaponClipSize_END
+
+weaponFightDist_START
+weaponFightDist( <weapon name> );
+
+Summary
+Returns the fight distance for this weapon
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<weapon name>	String	N/A	The weapon name.
+
+Example
+fightdist = weaponFightDist("mosin_nagant_sniper");
+weaponFightDist_END
+
+weaponFireTime_START
+weaponFireTime( <weapon name> );
+
+Summary
+Get the weapon fire time for the given weapon
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<weapon name>	String	N/A	The weapon name.
+
+Example
+weaponFireTime("mosin_nagant_sniper");
+weaponFireTime_END
+
+weaponIsBoltAction_START
+weaponIsBoltAction( <weapon name> );
+
+Summary
+Get whether this weapon has a bolt action
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<weapon name>	String	N/A	The weapon name.
+
+Example
+weaponIsBoltAction("mosin_nagant_sniper");
+weaponIsBoltAction_END
+
+weaponIsSemiAuto_START
+weaponIsSemiAuto( <weapon name> );
+
+Summary
+Get whether this weapon is semi automatic
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<weapon name>	String	N/A	The weapon name.
+
+Example
+weaponIsSemiAuto("mosin_nagant_sniper");
+weaponIsSemiAuto_END
+
+weaponMaxDist_START
+weaponMaxDist( <weapon name> );
+
+Summary
+Returns the maximum distance for this weapon
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<weapon name>	String	N/A	The weapon name.
+
+Example
+maxdist = weaponMaxDist("mosin_nagant_sniper");
+weaponMaxDist_END
+
+weaponType_START
+weaponType( <weapon name> );
+
+Summary
+Returns the type of weapon that this weapon is
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<weapon name>	String	N/A	The weapon name.
+
+Example
+if (weaponType("mosin_nagant_sniper") == "rifle")...;
+weaponType_END
+
+array_thread_START
+array_thread( <entities>, <process>, <var1>, <var2>, <var3> );
+
+Summary
+Threads the < process > function on every entity in the < entities > array. The entity will become "self" in the specified function.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<entities>	String	N/A	array of entities to thread the process
+<process>	String	N/A	pointer to a script function
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<var1>	N/A	N/A	parameter 1 to pass to the process
+<var2>	N/A	N/A	parameter 2 to pass to the process
+<var3>	N/A	N/A	parameter 3 to pass to the process
+
+Example
+array_thread( getaiarray( "allies" ), ::set_ignoreme, false );
+array_thread_END
+
+getstructarray_START
+<entity> getstructarray( <>, <> );
+
+Summary
+gets an array of script_structs
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+fxemitters = getstructarray( "streetlights", "targetname" )
+getstructarray_END
+
+fileprint_map_start_START
+<level> fileprint_map_start( <param1>, <param2> );
+
+Summary
+starts map export with the file trees\cod3\cod3\map_source\xenon_export\ < filename > .map adds header / worldspawn entity to the map. Use this if you want to start a .map export.
+
+Call on
+level
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<param1>	String	N/A	N/A
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<param2>	N/A	N/A	N/A
+
+Example
+fileprint_map_start( filename );
+fileprint_map_start_END
+
+fileprint_map_keypairprint_START
+<level> fileprint_map_keypairprint( <>, <> );
+
+Summary
+prints a pair of keys to the current open map( by fileprint_map_start() )
+
+Call on
+level
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+<>	String	N/A	N/A
+
+Example
+fileprint_map_keypairprint( "classname", "script_model" );
+fileprint_map_keypairprint_END
+
+fileprint_map_entity_start_START
+<level> fileprint_map_entity_start();
+
+Summary
+prints entity number and opening bracket to currently opened file
+
+Call on
+level
+
+Example
+fileprint_map_entity_start();
+fileprint_map_entity_start_END
+
+fileprint_map_entity_end_START
+<level> fileprint_map_entity_end();
+
+Summary
+close brackets an entity, required for the next entity to begin
+
+Call on
+level
+
+Example
+fileprint_map_entity_end();
+fileprint_map_entity_end_END
+
+fileprint_end_START
+<level> fileprint_end();
+
+Summary
+saves the currently opened file
+
+Call on
+level
+
+Example
+fileprint_end();
+fileprint_end_END
+
+fileprint_radiant_vec_START
+<entity> fileprint_radiant_vec( <> );
+
+Summary
+this converts a vector to a .map file readable format
+
+Call on
+An Entity
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+origin_string = fileprint_radiant_vec( vehicle.angles )
+fileprint_radiant_vec_END
+
+flag_START
+flag( <> );
+
+Summary
+Checks if the flag is set. Returns true or false.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+flag( "hq_cleared" );
+flag_END
+
+flag_init_START
+flag_init( <> );
+
+Summary
+Initialize a flag to be used. All flags must be initialized before using flag_set or flag_wait
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+flag_init( "hq_cleared" );
+flag_init_END
+
+flag_set_START
+flag_set( <> );
+
+Summary
+Sets the specified flag, all scripts using flag_wait will now continue.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+flag_set( "hq_cleared" );
+flag_set_END
+
+flag_wait_START
+flag_wait( <> );
+
+Summary
+Waits until the specified flag is set.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+flag_wait( "hq_cleared" );
+flag_wait_END
+
+flag_clear_START
+flag_clear( <> );
+
+Summary
+Clears the specified flag.
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+flag_clear( "hq_cleared" );
+flag_clear_END
+
+flag_waitopen_START
+flag_waitopen( <> );
+
+Summary
+Waits for the flag to open
+
+Arguments
+Variable	Data Type	Valid values	Additional information
+<>	String	N/A	N/A
+
+Example
+flag_waitopen( "get_me_bagels" );
+flag_waitopen_END
+
+trigger_on_START
+<trigger> trigger_on(, <name>, <type> );
+
+Summary
+Turns a trigger on. This only needs to be called if it was previously turned off
+
+Call on
+trigger
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<name>	N/A	N/A	the name corrisponding to a targetname or script_noteworthy to grab the trigger internally
+<type>	N/A	N/A	the type( targetname, or script_noteworthy ) corrisponding to a name to grab the trigger internally
+
+Example
+trigger trigger_on(); -or- trigger_on( "base_trigger", "targetname" )
+trigger_on_END
+
+trigger_off_START
+<trigger> trigger_off(, <name>, <type> );
+
+Summary
+Turns a trigger off so it can no longer be triggered.
+
+Call on
+trigger
+
+Optional 
+Arguments
+Variable	Data Type	Valid values	Additional information
+<name>	N/A	N/A	the name corrisponding to a targetname or script_noteworthy to grab the trigger internally
+<type>	N/A	N/A	the type( targetname, or script_noteworthy ) corrisponding to a name to grab the trigger internally
+
+Example
+trigger trigger_off();
+trigger_off_END
+
+isFlashed_START
+<ai> isFlashed();
+
+Summary
+Returns true if the player or an AI is flashed
+
+Call on
+ai
+
+Example
+flashed = level.price isflashed();
+isFlashed_END
